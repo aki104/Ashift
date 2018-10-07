@@ -1,0 +1,2 @@
+class WorkContent < ApplicationRecord
+end

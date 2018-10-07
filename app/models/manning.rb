@@ -1,0 +1,2 @@
+class Manning < ApplicationRecord
+end

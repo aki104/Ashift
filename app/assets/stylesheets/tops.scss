@@ -1,0 +1,33 @@
+// Place all the styles related to the tops controller here.
+// They will scautomatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.top {
+	// background-image: url(img/sample.jpg);
+	background-color: #DDDDDD
+}
+
+.header {
+	width: 100%;
+	height:50px;
+	background-color:#33CCFF;
+}
+
+.container {
+	display: inline-flex;
+	// align-items: center;
+	margin-top: 200px;
+}
+
+.link {
+	  color: #000000;
+    a:hover { color: #DDDDDD; text-decoration: none; }
+    text-decoration: none;
+}
+
+
+
+
+ 
