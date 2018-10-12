@@ -1,19 +1,35 @@
-<h1>従業員シフト変更ページ</h1>
-
-<div>
-<%= 15.times do |t| %>
-	<%= form_for(@time) do |f| %>
-	<div class= "container">
-		<div class= "item"><%= f.label :"#{t+1}日" %></div>
-
-		<div class= "item">
-			<%= f.select :first_time, [["8", "8".to_i], ["9", "9".to_i], ["10", "10".to_i], ["11", "11".to_i], ["12", "12".to_i], ["13", "13".to_i]["14", "14".to_i], ["15", "15".to_i], ["16", "16".to_i], ["17", "17".to_i], ["18", "18".to_i], ["19", "19".to_i], ["20", "20".to_i], ["21", "21".to_i], ["22", "22".to_i]] %>
-		</div>
-
-		<div class= "item">
-		    <%= f.select :last_time, [["00", "0".to_i], ["30", "30".to_i]] %>
-		</div>
+<p>従業員詳細ページ</p>
+<table>
+	<tr>
+		<td>
+	      <div>名前</div>
+	    </td>
+	    <td>
+	    	<div><%= @employee.name %></div>
+	    </td>
+	</tr>
+	<tr>
+		<td>
+			<div>従業員No.</div>
+		</td>
+		<td>
+	       <div><%= @employee.number %></div>
+	    </td>
+	</tr>
+</table>
+<div>作業登録</div>
+	<div class="checkbox">
+	    <label>
+	    <input type="checkbox" value="checkboxA"> 朝番
+	    </label>
 	</div>
-	<% end %>
-<% end %>	
-</div>
+	<div class="checkbox">
+	    <label>
+	    <input type="checkbox" value="checkboxA"> 昼番
+	    </label>
+	</div>
+	<div class="checkbox">
+	    <label>
+	    <input type="checkbox" value="checkboxA"> 夜番
+	    </label>
+	</div>

@@ -3,6 +3,8 @@
 <h1>Tops#top</h1>
 </header>
 
+<%= render 'layouts/header' %> 
+
 <body class= "top">
 	<div class="container">
 		<div class="item" style="width:200px; height:200px; background-color:#5D99FF; margin:0px 0px 0px 380px;">
@@ -15,18 +17,36 @@
 			</div>
 			<% end %>
 	   </div>
+
+	   <% if employee_signed_in? %>
 	   <div class="item" style="width:200px; height:200px; background-color:#FFE4B5; margin:0px 0px 0px 200px;">
-	        <%= link_to (new_employee_session_path), class: "link" do %>
+	        <%= link_to new_date_table_path, class: "link" do %>
 			<div style= "padding: 15px 0px 0px 35px; ">
 				<%= image_tag 'team.jpg', :width =>'120px', :height =>'100px' %>
 			</div>
 			<div>
 				<h3 style= "font-size: 20px; padding-left:10px;">従業員の方はこちら</h3>
-			</div>
-			<% end %>
+            </div>
+            <% end %>
 	   </div>
+
+	   <% else %>
+
+	   <div class="item" style="width:200px; height:200px; background-color:#FFE4B5; margin:0px 0px 0px 200px;">
+	        <%= link_to new_employee_session_path, class: "link" do %>
+			<div style= "padding: 15px 0px 0px 35px; ">
+				<%= image_tag 'team.jpg', :width =>'120px', :height =>'100px' %>
+			</div>
+			<div>
+				<h3 style= "font-size: 20px; padding-left:10px;">従業員の方はこちら</h3>
+            </div>
+            <% end %>
+	   </div>
+	  <% end %>
 	</div>
 
 </body>
 
-<%= link_to "シフト作成ページ", new_time_tables_path %>
+<%= link_to "シフト作成ページ", time_tables_path %>
+<%= link_to "マンニングページ", mannings_path %>
+<%= link_to "シフト送信ページ", new_date_table_path %>

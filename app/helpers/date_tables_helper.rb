@@ -1,0 +1,2 @@
+module DateTablesHelper
+end

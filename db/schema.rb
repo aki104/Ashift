@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_033240) do
+ActiveRecord::Schema.define(version: 2018_10_10_050409) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2018_10_06_033240) do
     t.string "number"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "date_tables", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -62,10 +69,13 @@ ActiveRecord::Schema.define(version: 2018_10_06_033240) do
   create_table "time_tables", force: :cascade do |t|
     t.integer "employee_id"
     t.date "date"
-    t.integer "first_time"
-    t.integer "last_time"
+    t.integer "first_time", default: 100, null: false
+    t.integer "last_time", default: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "first_timex", default: 100, null: false
+    t.integer "last_timex", default: 100, null: false
+    t.integer "date_table_id"
   end
 
   create_table "work_contents", force: :cascade do |t|

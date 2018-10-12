@@ -2,11 +2,98 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.new_time_table {
-	height: 100px;
+// .f {
+// 	margin-top: 20px;
+// }
+.send {
+	margin: 10px 0px 0px 100px;
 }
 
 .form {
-	height: 50px;
+	height: 40px;
+	width: 60px;
 }
+
+// 時間登録
+.box {
+	width: 90px;
+	height: 90px;
+	background-color:rgba(76,255,48,0.9);
+	border: solid 1px #999999;
+}
+.box:hover {
+	width: 90px;
+	height: 90px;
+	background-color:rgba(15,255,55,0.3);
+	border: solid 1px #999999;
+	transition: background-color .5s;
+}
+
+// 空欄
+.boxa {
+	width: 90px;
+	height: 70px;
+	border: solid 1px #999999;
+}
+
+// ユーザーの登録
+.boxe {
+	width: 200px;
+	height: 90px;
+	background-color:rgba(255,249,240,0.6);
+	border: solid 1px #999999;
+	font-size: 30px;
+
+}
+
+// 月下空欄
+.boxaa {
+	width: 200px;
+	height: 70px;
+	border: solid 1px #999999;
+}
+
+// 勤務と残業時間
+.boxt {
+	width: 90px;
+	height: 90px;
+	border: solid 1px #999999;
+}
+
+// 日付
+.day {
+	width:90px;
+	height:30px;
+	background-color:#EEEEEE;
+	border: solid 1px #999999;
+}
+
+.link {
+	font-color: black;
+	font-size: 20px;
+}
+
+.time_edit {
+	margin: 150px 0px 0px 500px;
+	width: 400px;
+	height: 500px;
+	border: solid 1px #999999;
+	background-color:rgba(241,255,209,1);
+}
+
+.time_edit_in {
+	margin: 100px 0px 0px 80px;
+}
+
+.time_edit_hedder {
+	width: 400px;
+	height: 30px;
+	background-color:rgba(18,255,26,0.5);
+}
+
+
+
+
+
+
+

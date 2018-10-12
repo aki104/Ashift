@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   def index
+    @employees = Employee.all
   end
 
   def create
@@ -9,6 +10,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    @employee = Employee.find(params[:id])
   end
 
   def update

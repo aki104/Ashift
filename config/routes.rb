@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+   #post 'date_tables/new'
 root 'tops#top'
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -15,8 +16,12 @@ devise_for :employees, controllers: {
 resources :employees, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 resources :works, only: [:create, :destroy]
 resources :work_contents, only: [:create]
-resources :manning, only: [:index, :update]
+resources :mannings, only: [:index, :update]
 resources :time_tables, only: [:create, :new, :destroy, :index, :edit, :update]
+resources :date_tables, only: [:new, :create, :update, :edit]
+
+
+
 resources :admins, only: [:create, :update, :destroy]
 
 
