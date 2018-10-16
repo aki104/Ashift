@@ -1,0 +1,48 @@
+
+
+<div class="qqq" >
+  <%= raw sprintf(
+              f.date_select(
+                  :date,
+                  discard_year: true,
+                  use_month_numbers: true,
+                  # discard_month: true,
+                  start_year:        2018,
+                  end_year:          (Time.now.year),
+                  default:           Date.new(Date.today.year.to_i,Date.today.month.to_i + 1),
+                  date_separator:    '%s'),
+           '月'  ) +'日'  %>
+
+
+ <%= f.select :first_time, [["休み", "#{100}"], ["8時", "#{8}"], ["9時", "#{9}時"], ["10時", "#{10}"], ["11時", "#{11}"], ["12時", "#{12}"], ["13時", "#{13}"], ["14時", "#{14}"], ["15時", "#{15}"], ["16時", "#{16}"], ["17時", "#{17}"], ["18時", "#{18}"], ["19時", "#{19}"], ["20時", "#{20}"], ["21時", "#{21}"], ["22時", "#{22}"]], {}, {class: 'form'} %>
+
+  <%= f.select :last_time, [["休み", "#{100}"], ["00分", "#{0}"], ["30分", "#{30}"]], {}, {class: 'form'} %>
+
+     ~
+
+  <%= f.select :first_timex, [["休み", "#{100}"], ["8時", "#{8}"], ["9時", "#{9}時"], ["10時", "#{10}"], ["11時", "#{11}"], ["12時", "#{12}"], ["13時", "#{13}"], ["14時", "#{14}"], ["15時", "#{15}"], ["16時", "#{16}"], ["17時", "#{17}"], ["18時", "#{18}"], ["19時", "#{19}"], ["20時", "#{20}"], ["21時", "#{21}"], ["22時", "#{22}"]], {}, {class: 'form'} %>
+
+  <%= f.select :last_timex, [["休み", "#{100}"], ["00分", "#{0}"], ["30分", "#{30}"]], {}, {class: 'form'}  %>
+
+
+  <%= link_to_remove_association "削除", f %>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="checkboxA"> 休み
+    </label>
+  </div>
+
+</div>
+
+
+
+<script>
+  $(function(){
+    $('.qqq').each(function(i) {
+      $(this).find($('select')).eq(1).find($('option')).eq(i).attr('selected', 'selected');
+    });
+});
+</script>
+
+

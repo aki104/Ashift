@@ -1,0 +1,66 @@
+
+<header class="header">
+<%= render 'layouts/header' %> 
+</header>
+
+
+
+<body class= "top">
+	<div class="container">
+		<div class="item" style="width:200px; height:200px; background-color:#5D99FF; margin:0px 0px 0px 380px; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+			<%= link_to (new_admin_session_path), class: "link" do %>
+			<div style= "padding: 15px 0px 0px 35px; ">
+				<%= image_tag 'saraly.jpg', :width =>'120px', :height =>'100px' %>
+			</div>
+			<div>
+				<h3 style= "font-size: 20px; padding-left: 10px;">管理者の方はこちら</h3>
+			</div>
+			<% end %>
+	   </div>
+
+	   <% if employee_signed_in? %>
+
+	   <% if DateTable.exists?(employee_id: current_employee.id) %>
+	   <div class="item" style="width:200px; height:200px; background-color:#FFE4B5; margin:0px 0px 0px 200px; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+	        <%= link_to edit_date_table_path(current_employee.id), class: "link" do %>
+			<div style= "padding: 15px 0px 0px 35px; ">
+				<%= image_tag 'team.jpg', :width =>'120px', :height =>'100px' %>
+			</div>
+			<div>
+				<h3 style= "font-size: 20px; padding-left:10px;">従業員の方はこちら</h3>
+            </div>
+            <% end %>
+	   </div>
+	   <% else %>
+	   <div class="item" style="width:200px; height:200px; background-color:#FFE4B5; margin:0px 0px 0px 200px; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+	        <%= link_to new_date_table_path, class: "link" do %>
+			<div style= "padding: 15px 0px 0px 35px; ">
+				<%= image_tag 'team.jpg', :width =>'120px', :height =>'100px' %>
+			</div>
+			<div>
+				<h3 style= "font-size: 20px; padding-left:10px;">従業員の方はこちら</h3>
+            </div>
+            <% end %>
+	   </div>
+	   <% end %>
+
+	   <% else %>
+
+	   <div class="item" style="width:200px; height:200px; background-color:#FFE4B5; margin:0px 0px 0px 200px; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+	        <%= link_to new_employee_session_path, class: "link" do %>
+			<div style= "padding: 15px 0px 0px 35px; ">
+				<%= image_tag 'team.jpg', :width =>'120px', :height =>'100px' %>
+			</div>
+			<div>
+				<h3 style= "font-size: 20px; padding-left:10px;">従業員の方はこちら</h3>
+            </div>
+            <% end %>
+	   </div>
+	  <% end %>
+	</div>
+
+</body>
+
+<%= link_to "シフト作成ページ", time_tables_path %>
+<%= link_to "マンニングページ", mannings_path %>
+<%= link_to "シフト送信ページ", new_date_table_path %>

@@ -1,0 +1,37 @@
+<h1>DateTablesnew</h1>
+<%= render 'layouts/header' %> 
+
+
+<%= form_for @date_table do |f| %>
+	<div class="year">
+		<%= f.label :登録したい月を選択　%><br/>
+		<%= raw sprintf(
+		              f.date_select(
+		                  :date,
+		                  discard_day: true,
+		                  use_month_numbers: true,
+		                  start_year:        2018,
+		                  end_year:          (Time.now.year),
+		                  default:           Date.new(Date.today.year.to_i,Date.today.month.to_i + 1, 1),
+		                  date_separator:    '%s'),
+		              '年 ') + '月'%>
+    </div>
+	<div></div>
+	<div class="">
+		<%= f.fields_for :time_tables do |d| %>
+  			<% i = 0 %>
+			<%= render 'time_table_fields', f: d %>
+
+		<% end %>
+		<%= link_to_add_association 'add time_tble', f, :time_tables %>
+	</div>
+
+	<%= f.submit "登録" %>
+
+
+<% end %>
+
+
+
+
+

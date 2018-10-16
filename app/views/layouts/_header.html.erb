@@ -1,0 +1,37 @@
+<header id="header" class="header">
+      <div class="header__menu">
+
+        <nav class="header__menu__nav">
+          <% if employee_signed_in? %>
+            <span><%= current_employee.name %></span>
+          <% else %>
+            <span>ログインしてください</span>
+          <% end %>
+          <ul class="nav__ul">
+            <% if employee_signed_in? %>
+
+              <li class="nav__li">
+                    <%= link_to  destroy_employee_session_path ,class: "nav__logo", method: :delete  do %>
+                   <span class="nav__txt">ログアウト</span>
+                <% end %>
+              </li>
+
+
+            <% else %>
+
+              <li class="nav__li">
+                <%= link_to new_employee_session_path, class: "nav__logo" do %>
+                <span class="nav__txt">ログイン</span>
+                <% end %>
+              </li>
+              <li class="nav__li">
+                <%= link_to new_employee_registration_path, class: "nav__logo"  do %>
+
+                <span class="nav__txt">新規登録</span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>

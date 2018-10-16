@@ -1,0 +1,35 @@
+<p>従業員詳細ページ</p>
+<table>
+	<tr>
+		<td>
+	      <div>名前</div>
+	    </td>
+	    <td>
+	    	<div><%= @employee.name %></div>
+	    </td>
+	</tr>
+	<tr>
+		<td>
+			<div>従業員No.</div>
+		</td>
+		<td>
+	       <div><%= @employee.number %></div>
+	    </td>
+	</tr>
+</table>
+<div>作業登録</div>
+	<div class="checkbox">
+	    <label>
+	    <input type="checkbox" value="checkboxA"> 朝番
+	    </label>
+	</div>
+	<div class="checkbox">
+	    <label>
+	    <input type="checkbox" value="checkboxA"> 昼番
+	    </label>
+	</div>
+	<div class="checkbox">
+	    <label>
+	    <input type="checkbox" value="checkboxA"> 夜番
+	    </label>
+	</div>

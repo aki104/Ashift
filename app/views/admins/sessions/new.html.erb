@@ -1,0 +1,25 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :admin_name  %>
+  </div>
+  <div class="field">
+    <%= f.label :従業員No  %><br />
+    <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "admins/shared/links" %>
