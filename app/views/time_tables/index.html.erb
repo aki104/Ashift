@@ -1,6 +1,6 @@
 
 <header class="header">
-
+<%= render 'layouts/admin_header' %> 
 </header>
 <ul class="nav nav-tabs nav-justified" style="background-color:rgba(51,255,0,0.1); margin-bottom: 10px;">
 	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "ホーム", (time_tables_path) %></li>
@@ -12,10 +12,13 @@
 	<table>
 		<tr>
 			<th></th>
-
-	<% @time_tables.each do |time| %>
-			<th><div class="day"><%= time.date %></div></th>
-	<% end %>
+			<% @time_tables.each do |time| %>
+			<th>
+				<%= link_to (mannings_path(time)), :style => "text-decoration: none;", :class => "link" do %>
+				<div class="day"><%= time.date %></div>
+				<% end %>
+			</th>
+	        <% end %>
 
             <td><div class="day"></div></td>
 			<td><div class="day"></div></td>
@@ -24,7 +27,7 @@
 
 		<tr>
 			<td><div class="boxaa"></div></td>
-			<% 15.times do |i| %>
+			   <% 15.times do |i| %>
 			<td><div class="boxa"></div></td>
 			<% end %>
 			<td><div class="boxa"></div></td>
@@ -32,7 +35,7 @@
 		</tr>
 
 
-    <% @employees.each do |employee| %>
+        <% @employees.each do |employee| %>
 
 		<tr>
 			<td>
@@ -42,41 +45,58 @@
 			</td>
 
 
-    <% date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01") %>
-    <% unless date == nil %>
-    <% time = TimeTable.where(date_table_id: date.id) %>
+		    <% date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01") %>
+		    <% unless date == nil %>
+		    <% time = TimeTable.where(date_table_id: date.id) %>
 
-    <% time.each do |t| %>
+		    <% @working_time = 0 %>
 
-        <% if t.first_time != 100 %>
+		    <% time.each do |t| %>
+
+            <% @all_working_time = t.first_timex - t.first_time %>
+            <% @lt = t.last_timex -  t.last_time %>
+
+            <% if @lt == 30 %>
+            <%  @all_working_time += 0.5 %>
+            <% elsif @lt == -30 %>
+            <% @all_working_time -= 0.5 %>
+            <% end %>
+
+            <% @working_time += @all_working_time %>
+
+            <% if t.first_time != 100 %>
             <td>
-            <%= link_to (edit_time_table_path(t)), :style => "text-decoration: none;", :class => "link" do %>
-	        	<div class="box">
-	        	       <%= t.first_time %>:<%= t.last_time %>
-                       ~
-	        	       <%= t.first_timex %>:<%= t.last_timex %>
-	        	</div>
-	        <% end %>
+                <%= link_to (edit_time_table_path(t)), :style => "text-decoration: none;", :class => "link" do %>
+	        	    <div class="box">
+		        	       <%= t.first_time %>:<%= t.last_time %>
+	                       ~
+		        	       <%= t.first_timex %>:<%= t.last_timex %>
+	        	    </div>
+	            <% end %>
 	        </td>
         <% else %>
-
 	        <td>
-	        	<div class="box" style="background-color:rgba(59,0,0,0.3);">
-	        		<div style="margin: 28px 0px 0px 28px;">
-	        	      <%= image_tag 'stamp_yasumi.png', :width =>'30px', :height =>'30px' %>
-	        	    </div>
-	        	</div>
+	           <%= link_to (edit_time_table_path(t)), :style => "text-decoration: none;", :class => "link" do %>
+	        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
+	        		  <div style="margin: 28px 0px 0px 28px;">
+	        	        <%= image_tag 'stamp_yasumi.png', :width =>'30px', :height =>'30px' %>
+	        	      </div>
+	        	  </div>
+	           <% end %>
 	        </td>
 	        <% end %>
 	       <% end %>
 	      <% end %>
 
-			<td><div class="boxt">総労働時間<br/><%= @all_aa %></div></td>
+
+			<td><div class="boxt">総労働時間<br/><%= @working_time %></div></td>
 			<td><div class="boxt">残業時間</div></td>
 		</tr>
 <% end %>
 	</table>
 </div> 
+
+
 
 
 

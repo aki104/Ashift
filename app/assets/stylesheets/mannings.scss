@@ -1,3 +1,21 @@
 // Place all the styles related to the mannings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.manning_sheet {
+	width: 100%;
+	background-color:rgba(13,196,0,1);
+}
+
+.manning_employee{
+	width: 200px;
+	height: 100px;
+	background-color:rgba(81,89,78,0.4);
+
+}
+
+.manning_time{
+	width: 100%;
+	height:30px;
+	background-color:rgba(81,89,78,0.2);
+}

@@ -18,18 +18,7 @@ class TimeTablesController < ApplicationController
   def index
       @time_tables = TimeTable.all
       @employees = Employee.all
-      
-       @employees.each do |employee|
-          date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01")
-          time = TimeTable.where(date_table_id: date.id)
-           @aa = 0
-       time.each do |time|
-
-      @all_aa = time.first_timex * time.first_time
-      @aa += @all_aa
-    end
-  end
-
+      @date_tables = DateTable.all
 
 
       #@date_tables = @time_tables.find(date_table_id: id)
@@ -52,9 +41,27 @@ class TimeTablesController < ApplicationController
   end
 
   def update
-      time_table = TimeTable.find(params[:id])
-      time_table.update(time_table_params)
-      redirect_to time_tables_path
+      @time_table = TimeTable.find(params[:id])
+      puts  params[:time_table][:first_time]
+# binding.pry
+    if  params[:time_table][:first_time].to_i == 100
+      puts "sss"
+
+        @time_table.update(first_time: 100, first_timex: 100, last_time: 100, last_timex: 100)
+        redirect_to time_tables_path, notice: '時間を編集しました'
+    else
+ 
+         if @time_table.update(time_table_params)
+            redirect_to time_tables_path, notice: '時間を編集しました'
+
+         else
+            render "edit"
+         end
+    end
+
+  end
+
+  def update2 
   end
 
   def destroy
@@ -63,7 +70,7 @@ class TimeTablesController < ApplicationController
   private
 
   def time_table_params
-    params.require(:time_table).permit(:id, :first_time, :first_timex, :last_time, :last_timex, :employee_id )
+    params.require(:time_table).permit(:id, :first_time, :first_timex, :last_time, :last_timex, :employee_id, :date)
   end
 
 end

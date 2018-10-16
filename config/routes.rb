@@ -20,7 +20,7 @@ resources :mannings, only: [:index, :update]
 resources :time_tables, only: [:create, :new, :destroy, :index, :edit, :update]
 resources :date_tables, only: [:new, :create, :update, :edit]
 
-
+patch 'items/:id/check' => 'items#update2',as: 'update2'
 
 resources :admins, only: [:create, :update, :destroy]
 

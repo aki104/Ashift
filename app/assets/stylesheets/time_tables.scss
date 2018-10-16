@@ -69,14 +69,14 @@
 }
 
 .link {
-	font-color: black;
+	color: white;
 	font-size: 20px;
 }
 
 .time_edit {
 	margin: 150px 0px 0px 500px;
 	width: 400px;
-	height: 500px;
+	height: 550px;
 	border: solid 1px #999999;
 	background-color:rgba(241,255,209,1);
 }
@@ -90,6 +90,23 @@
 	height: 30px;
 	background-color:rgba(18,255,26,0.5);
 }
+
+.date {
+	display:none;
+}
+
+.header__menu__nav {
+	color: white;
+	text-decoration: none;
+}
+
+.nav_txt {
+	margin-left: 1000px;
+}
+
+
+
+
 
 
 

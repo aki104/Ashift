@@ -1,0 +1,32 @@
+<header id="header" class="header">
+      <div class="header__menu">
+
+        <nav class="header__menu__nav">
+          <% if admin_signed_in? %>
+            <span class="nav_txt"><%= current_admin.admin_name %></span>
+          <% else %>
+            <span>ログインしてください</span>
+          <% end %>
+          <ul class="nav__ul">
+            <% if admin_signed_in? %>
+
+              <li class="nav__li">
+                    <%= link_to  destroy_admin_session_path ,:style => "text-decoration: none;", :class => "header__menu__nav",  method: :delete  do %>
+                   <span class="nav_txt">ログアウト</span>
+                <% end %>
+              </li>
+
+
+            <% else %>
+
+              <li class="nav__li">
+                <%= link_to new_admin_session_path,:style => "text-decoration: none;" do %>
+                <span class="nav_txt">ログイン</span>
+                <% end %>
+              </li>
+              
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
