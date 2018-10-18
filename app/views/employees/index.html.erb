@@ -1,8 +1,39 @@
-<h1>Employees#index</h1>
 
-<% @employees.each do |employee| %>
+<%= render 'layouts/admin_header' %>
 
-<%= employee.name %>
-<%= employee.number %>
+<ul class="nav nav-tabs nav-justified" style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (top_path), :style => "text-decoration: none;"  %></li>
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;" %></li>
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;" %></li>
+</ul>
 
-<% end %>
+<div><h1>従業員一覧</h1></div>
+
+<div>
+	<% @employees.each do |employee| %>
+        <table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>名前</th>
+					<th>従業員No.</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                    	<%= link_to (edit_employee_path(employee.id)), :style => "text-decoration: none;", :class => "link_employee" do %>
+						<div>
+		                    <%= employee.name %>
+		                </div>
+		                <% end %>
+					</td>
+					<td>
+						<div>
+		                    <%= employee.number %>
+		                </div>
+					</td>
+				</tr>
+			</tbody>
+        </table>
+    <% end %>
+</div>

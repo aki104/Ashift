@@ -1,32 +1,29 @@
-<header id="header" class="header">
+<header class="header_nav">
       <div class="header__menu">
 
         <nav class="header__menu__nav">
+          <%= link_to (top_path) do %>
+          <span class="header_image">
+          <%= image_tag 'karender.png', :width =>'90px', :height =>'60px' %>
+        </span>
+        <% end %>
+
           <% if admin_signed_in? %>
-            <span class="nav_txt"><%= current_admin.admin_name %></span>
+            <span class="nav_name"><%= current_admin.admin_name %>さん</span>
           <% else %>
             <span>ログインしてください</span>
           <% end %>
-          <ul class="nav__ul">
-            <% if admin_signed_in? %>
 
-              <li class="nav__li">
+            <% if admin_signed_in? %>
                     <%= link_to  destroy_admin_session_path ,:style => "text-decoration: none;", :class => "header__menu__nav",  method: :delete  do %>
                    <span class="nav_txt">ログアウト</span>
                 <% end %>
-              </li>
-
-
             <% else %>
-
-              <li class="nav__li">
                 <%= link_to new_admin_session_path,:style => "text-decoration: none;" do %>
                 <span class="nav_txt">ログイン</span>
                 <% end %>
-              </li>
-              
+
             <% end %>
-          </ul>
         </nav>
       </div>
-    </header>
+</header>

@@ -18,7 +18,7 @@
 	      <div class="">
 	      	<p>時間を入力してください</p>
 	      	<%= raw sprintf(
-              f.date_field(
+              f.date_select(
                   :date,
                   discard_year: true,
                   use_month_numbers: true,
@@ -35,13 +35,8 @@
 
 		         <% end %>
 	     </div>
-	     <div class="checkbox">
-			<label>
-				<input type="checkbox" value="checkboxA"> 休み
-			</label>
-	     </div>
 
-         <%= f.submit "登録" %>
+         <%= f.submit "登録", class: "follow_submit"%>
          <% end %>
         </div>
 </div>

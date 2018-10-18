@@ -1,35 +1,97 @@
-<p>従業員詳細ページ</p>
-<table>
-	<tr>
-		<td>
-	      <div>名前</div>
-	    </td>
-	    <td>
-	    	<div><%= @employee.name %></div>
-	    </td>
-	</tr>
-	<tr>
-		<td>
-			<div>従業員No.</div>
-		</td>
-		<td>
-	       <div><%= @employee.number %></div>
-	    </td>
-	</tr>
-</table>
+
+<%= render 'layouts/admin_header' %>
+<ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (top_path), :style => "text-decoration: none;"  %></li>
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;" %></li>
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;" %></li>
+</ul>
+
+
+<!-- 　31行目までは労働時間を出すための計算 -->
+			    <% date = DateTable.find_by(employee_id: @employee.id, date: "2018-11-01") %>
+			        <% unless date == nil %>
+			    <% time = TimeTable.where(date_table_id: date.id) %>
+
+			        <% @working_time = 0 %> <!-- 労働時間 -->
+			        <% @over_time = 0 %>  <!-- 残業時間 -->
+
+			     <% time.each do |t| %>
+
+		            <% @all_working_time = t.first_timex - t.first_time %>
+		            <% @lt = t.last_timex -  t.last_time %>
+
+	            <% if @lt == 30 %>
+	                <%  @all_working_time += 0.5 %>
+
+	            <% elsif @lt == -30 %>
+	                <% @all_working_time -= 0.5 %>
+
+	            <% end %>
+	            <% @working_time += @all_working_time %>
+ <!-- 　10行目から労働時間を出すための計算 -->
+ <!-- 　36行目まで残業時間を出すための計算 -->
+	             <%  @all_over_time = @all_working_time - 8 %>
+			    <% if @all_over_time >= 0 %>
+			    <% @over_time += @all_over_time %>
+<!-- 32行目から残業時間を出すための計算 -->
+			    <% end %>
+                <% end %>
+                <% end %>
+
+<div>
+	<div class="edit_employee">
+	     <p style="text-align: center; background-color:rgba(105,255,110,1);">従業員詳細</p>
+	    <table class="table" style="margin-top: 50px;">
+			<tr>
+				<td>
+			      <div>名前</div>
+			    </td>
+			    <td>
+			    	<div><%= @employee.name %></div>
+			    </td>
+			</tr>
+			<tr>
+				<td>
+					<div>従業員No.</div>
+				</td>
+				<td>
+			       <div><%= @employee.number %></div>
+			    </td>
+			</tr>
+			<tr>
+				<td>
+					<div>今月の総労働時間</div>
+				</td>
+				<td>
+			       <div><%= @working_time %>時間</div>
+			    </td>
+			</tr>
+			<tr>
+				<td>
+					<div>今月の残業時間</div>
+				</td>
+				<td>
+			       <div><%= @over_time %>時間</div>
+			    </td>
+			</tr>
+
+
+	    </table>
 <div>作業登録</div>
-	<div class="checkbox">
-	    <label>
-	    <input type="checkbox" value="checkboxA"> 朝番
-	    </label>
+		<div class="checkbox">
+		    <label>
+		    <input type="checkbox" value="checkboxA"> 朝番
+		    </label>
+		</div>
+		<div class="checkbox">
+		    <label>
+		    <input type="checkbox" value="checkboxA"> 昼番
+		    </label>
+		</div>
+		<div class="checkbox">
+		    <label>
+		    <input type="checkbox" value="checkboxA"> 夜番
+		    </label>
+		</div>
 	</div>
-	<div class="checkbox">
-	    <label>
-	    <input type="checkbox" value="checkboxA"> 昼番
-	    </label>
-	</div>
-	<div class="checkbox">
-	    <label>
-	    <input type="checkbox" value="checkboxA"> 夜番
-	    </label>
-	</div>
+</div>

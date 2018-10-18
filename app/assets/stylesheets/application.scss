@@ -20,7 +20,21 @@
 
 
 
+input.follow_submit{
+  @extend .btn !optional;
+  @extend .btn-large !optional;
+  @extend .btn-primary !optional;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
- a {
- 	text-decoration: none;
- }
+}
+
+.form {
+	height: 30px;
+	width: 60px;
+	margin-top: 20px;
+    margin-bottom: 20px;
+	@extend .btn !optional;
+    @extend .btn-large !optional;
+    @extend .btn-success!optional;
+}
