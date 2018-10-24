@@ -9,102 +9,103 @@
 </ul>
 
 <div>
-	<div class="month"><%= DateTable.find_by(date: Date.new(2018,11)).date.month %>月</div>
-		<div style="text-align: center;color: #800000;">1日〜15日<%= link_to "＞＞", time_tables_l_path, class: "btn btn-default  btn-xs" %></div>
 
 	<div class="shift">
+		<div class="month"><%= DateTable.find_by(date: Date.new(2018,11)).date.month %>月</div>
+		<div style="text-align: center;color:#800000;"><%= link_to "＜＜", time_tables_path, class: "btn btn-default btn-xs" %>16日〜30日</div>
+
 		<table>
 			<tr>
 				<th></th>
-                <th>
-	               <% sss = TimeTable.find_by(date: "2018-11-1") %>
+				<th>
+	               <% sss = TimeTable.find_by(date: "2018-11-16") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{1}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{16}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-2") %>
+					<% sss = TimeTable.find_by(date: "2018-11-17") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{2}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"style="color:red;"><%= "#{17}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-3") %>
+					<% sss = TimeTable.find_by(date: "2018-11-18") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day" style="color:red;"><%= "#{3}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day" style="color:red;"><%= "#{18}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-4") %>
+	               <% sss = TimeTable.find_by(date: "2018-11-19") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day" style="color:red;"><%= "#{4}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{19}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-5") %>
+					<% sss = TimeTable.find_by(date: "2018-11-20") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{5}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{20}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-6") %>
+					<% sss = TimeTable.find_by(date: "2018-11-21") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{6}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{21}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-7") %>
+	               <% sss = TimeTable.find_by(date: "2018-11-22") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{7}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{22}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-8") %>
+					<% sss = TimeTable.find_by(date: "2018-11-23") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{8}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{23}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-9") %>
+					<% sss = TimeTable.find_by(date: "2018-11-24") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{9}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"style="color:red;"><%= "#{24}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				 <th>
-	               <% sss = TimeTable.find_by(date: "2018-11-10") %>
+	               <% sss = TimeTable.find_by(date: "2018-11-25") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day" style="color:red;"><%= "#{10}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day" style="color:red;"><%= "#{25}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-11") %>
+					<% sss = TimeTable.find_by(date: "2018-11-26") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day" style="color:red;"><%= "#{11}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{26}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-12") %>
+					<% sss = TimeTable.find_by(date: "2018-11-27") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{12}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{27}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-13") %>
+	               <% sss = TimeTable.find_by(date: "2018-11-28") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{13}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{28}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-14") %>
+					<% sss = TimeTable.find_by(date: "2018-11-29") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{14}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{29}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-15") %>
+					<% sss = TimeTable.find_by(date: "2018-11-30") %>
 					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{15}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+					<div class="day"><%= "#{30}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
 					<% end %>
 				</th>
 
@@ -115,8 +116,6 @@
 
 			<tr>
 				<td><div class="boxaa"></div></td>
-
-
 				   <% 15.times do |i| %>
 				<td><div class="boxa"><input type="text" class="form-control"></div></td>
 				　　<% end %>
@@ -137,79 +136,79 @@
 
 			    <% date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01") %>
 			        <% unless date == nil %>
-			    <% time = TimeTable.where(date_table_id: date.id, date: "2018-11-01".."2018-11-15") %>
+			    <% time = TimeTable.where(date_table_id: date.id, date: "2018-11-16".."2018-11-30") %>
 
 			     <% time.each do |t| %>
+		            <% if t.first_time != 100 %>
+			            <td>
+			                <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
+				        	    <div class="box">
+				        	    	<% if t.last_time == 0 && t.last_timex == 0 %>
+				        	    	       <%= t.first_time %>:00
+					                       ~
+						        	       <%= t.first_timex %>:00
+					        	    	<% elsif t.last_time == 0 %>
+					        	    	   <%= t.first_time %>:00
+					                       ~
+						        	       <%= t.first_timex %>:<%= t.last_timex %>
+						        	    <% elsif t.last_timex == 0 %>
+					        	    	   <%= t.first_time %>:<%= t.last_time %>
+					                       ~
+						        	       <%= t.first_timex %>:00
+					        	    	<% else %>
+						        	       <%= t.first_time %>:<%= t.last_time %>
+					                       ~
+						        	       <%= t.first_timex %>:<%= t.last_timex %>
+						        	<% end %>
+				        	    </div>
+				        	</div>
+				        </td>
+		            <% else %>
+				        <td>
+				           <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
+				        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
+				        		  <div style="margin: 20px 0px 0px 25px;">
+				        	        <%= image_tag 'stamp_yasumi.png', :width =>'20px', :height =>'20px' %>
+				        	      </div>
+				        	  </div>
+				           </div>
+				        </td>
+			        <% end %>
+			        <% end %>
+			        <% end %>
 
-
-	            <% if t.first_time != 100 %>
-		            <td>
-		            	<div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
-			        	    <div class="box">
-			        	    	<% if t.last_time == 0 && t.last_timex == 0 %>
-			        	    	       <%= t.first_time %>:00
-				                       ~
-					        	       <%= t.first_timex %>:00
-				        	    	<% elsif t.last_time == 0 %>
-				        	    	   <%= t.first_time %>:00
-				                       ~
-					        	       <%= t.first_timex %>:<%= t.last_timex %>
-					        	    <% elsif t.last_timex == 0 %>
-				        	    	   <%= t.first_time %>:<%= t.last_time %>
-				                       ~
-					        	       <%= t.first_timex %>:00
-				        	    	<% else %>
-					        	       <%= t.first_time %>:<%= t.last_time %>
-				                       ~
-					        	       <%= t.first_timex %>:<%= t.last_timex %>
-					        	<% end %>
-			        	    </div>
-			            </div>
-			        </td>
-	            <% else %>
-			        <td>
-			           <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
-			        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
-			        		  <div style="margin: 20px 0px 0px 25px;">
-			        	        <%= image_tag 'stamp_yasumi.png', :width =>'20px', :height =>'20px' %>
-			        	      </div>
-			        	  </div>
-			           </div>
-			        </td>
-		        <% end %>
-		        <% end %>
-		        <% end %>
-
-　　　　　　　　　<% if @p[i] > 45 %>
-				　　<td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
-				　　<td><div class="boxt" style="color: red; font-size: 5px;">残業時間が45時間を超えています<br/><%= @p[i] %></div></td>
-				<% else %>
-				   <td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
-				　　<td><div class="boxt">残業時間<br/><%= @p[i] %></div></td>
-				<% end %>
-				<% i += 1 %>
-			</tr>
+	　　　　　　　　　<% if @p[i] > 45 %>
+					　　<td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
+					　　<td><div class="boxt" style="color: red; font-size: 5px;">残業時間が45時間を超えています<br/><%= @p[i] %></div></td>
+					<% else %>
+					   <td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
+					　　<td><div class="boxt">残業時間<br/><%= @p[i] %></div></td>
+					<% end %>
+					<% i += 1 %>
+				</tr>
 	<% end %>
-		</table>
+	   </table>
 
-    <div class="sign_modal_wrapper"></div>
+	 <div class="sign_modal_wrapper"></div>
     	<div class="sign_modal">
     		<span class="fa_wrapper"><i class="fas fa-backspace"></i></span>
-    		<div class="sign_modal_edit sign_modal_content">
-    			<P class="ja" style="font-size: 20px;">時間編集</P>
-				<div class="input-group">
-					<div id="employee_name"></div>
-					<form class="edit_time_table" id="edit_time_table" action="/time_tablesaa" method="post" accept-charset="UTF-8">
+    		  <div class="sign_modal_edit sign_modal_content">
+    			  <P class="ja" style="font-size: 20px;">時間編集</P>
+				  <div class="input-group">
+					 <div id="employee_name"></div>
+					 <form class="edit_time_table" id="edit_time_table" action="/time_tablesaa" method="post" accept-charset="UTF-8">
 						<input type="" class="" name="time_table[date]" id="time_table_date"><br/>
-						<select type="integer" class="form" style="margin-left:20px;" name="time_table[first_time]" id="time_table_first_time"></select>
+						<select type="integer" style="margin-left:15px" class="form"  name="time_table[first_time]" id="time_table_first_time"></select>
 						<select type="integer" class="form" name="time_table[last_time]" id="time_table_last_time"></select>
 						~
 						<select type="integer" class="form" name="time_table[first_timex]" id="time_table_first_timex"></select>
 						<select type="integer" class="form" name="time_table[last_timex]" id="time_table_last_timex"></select>
 						<input type="checkbox" value="100" name="time_table[first_time]" id="time_table_first_time"class="" >休み
 
-						<input type="hidden" value="asdf" name="" id="employee_id"><br/>
-						<input type="submit" name="commit" value="登録" class="follow_submit" date-disable-with="登録">
+						<input type="hidden" value="asdf" name="" id="employee_id">
+						<div>
+						  <input type="submit" name="commit" value="登録" class="follow_submit" date-disable-with="登録">
+					    </div>
                     </form>
 
 
@@ -317,6 +316,12 @@
 
 	})
 </script>
+
+
+
+
+
+
 
 
 

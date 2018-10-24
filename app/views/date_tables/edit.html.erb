@@ -1,40 +1,41 @@
 
-<div class="date_edit">
-	<div class="time_edit_hedder"></div>
-	   <div class="time_edit_in">
-	      <%= form_for @date_table do |f| %>
-	      <% if @date_table.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @date_table.errors.count %>件のエラーが発生しました。</h2>
+<%= render 'layouts/header' %> 
 
-      <ul>
-      <% @date_table.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <div class="date_edit">
+	      <div class="time_edit_in">
+    	      <%= form_for @date_table do |f| %>
+    	      <% if @date_table.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= @date_table.errors.count %>件のエラーが発生しました。</h2>
 
-	      <div class="">
-	      	<p>時間を入力してください</p>
-	      	<%= raw sprintf(
-              f.date_select(
-                  :date,
-                  discard_year: true,
-                  use_month_numbers: true,
-                  # discard_month: true,
-                  start_year:        2018,
-                  end_year:          (Time.now.year),
-                  default:           Date.new(Date.today.year.to_i,Date.today.month.to_i + 1),
-                  date_separator:    '%s'),
-           '月'  ) +'日'%><br/>
+                <ul>
+                <% @date_table.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+            </div>
+            <% end %>
+
+    	      <div class="">
+      	      	<p>時間を入力してください</p>
+      	      	<%= raw sprintf(
+                    f.date_select(
+                        :date,
+                        discard_year: true,
+                        use_month_numbers: true,
+                        discard_day: true,
+                        start_year:        2018,
+                        end_year:          (Time.now.year),
+                        default:           Date.new(Date.today.year.to_i,Date.today.month.to_i + 1),
+                        date_separator:    '%s'),
+                 '月'  ) +'月'%><br/>
 
 
-				 <%= f.fields_for :time_tables do |d| %>
-				 <%= render 'time_table_fields', f: d %>
+      				   <%= f.fields_for :time_tables do |d| %>
+      				   <%= render 'time_table_fields', f: d %>
 
-		         <% end %>
-	     </div>
+      		      <% end %>
+    	      </div>
 
          <%= f.submit "登録", class: "follow_submit"%>
          <% end %>

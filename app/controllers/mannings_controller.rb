@@ -2,6 +2,7 @@ class ManningsController < ApplicationController
   def show
   	@employees = Employee.all
   	@time_tables = TimeTable.where(date: Date.new(2018,11,params[:id].to_i)).where.not(first_time: 100)
+
   end
 
   def update

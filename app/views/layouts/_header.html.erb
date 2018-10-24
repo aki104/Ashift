@@ -1,34 +1,23 @@
 <header class="header_nav">
-      <div class="header__menu">
-        <% link_to (top_path) do %>
-        <div class="header_image">
-          <%= image_tag 'karender.png', :width =>'90px', :height =>'60px' %>
-        </div>
-        <% end %>
-
-        <nav class="header__menu__nav">
-          <% if employee_signed_in? %>
-            <span class="nav_name"><%= current_employee.name %></span>
-          <% else %>
-            <span>ログインしてください</span>
+      <div class="">
+        <nav>
+          <ul style="display: flex; list-style:none;">
+           <%= link_to (root_path) do %>
+            <li class="header_image">
+                <%= image_tag 'logo3.png', :width =>'150px', :height =>'80px' %>
+            </li>
           <% end %>
-            <% if employee_signed_in? %>
-
-                    <%= link_to  destroy_employee_session_path ,class: "nav__logo", method: :delete  do %>
-                   <span class="nav_txt">ログアウト</span>
-                <% end %>
-
-            <% else %>
-
-                <%= link_to new_employee_session_path, class: "nav__logo" do %>
-                <span class="nav_txt">ログイン</span>
-                <% end %>
-
-                <%= link_to new_employee_registration_path, class: "nav__logo"  do %>
-　　　　　　　　　<span class="nav_txt">新規登録</span>
-                <% end %>
-
-            <% end %>
-        </nav>
+              <% if employee_signed_in? %>
+                  <li style="padding: 19px 0px 0px 800px;"><%= current_employee.name %>さんログイン中</li>
+                  <%= link_to  destroy_employee_session_path ,class: "", method: :delete  do %>
+                      <li class="">ログアウト</li>
+                  <% end %>
+              <% else %>
+                  <li style="padding: 19px 0px 0px 800px;">ログインしてください</li>
+                  <li style="padding: 19px 0px 0px 15px;"><%= link_to "ログイン", new_employee_session_path, class: ""  %></li>
+                  <li style="padding: 19px 0px 0px 15px;"><%= link_to "新規登録", new_employee_registration_path, class: ""  %></li>
+              <% end %>
+            </ul>
+          </nav>
       </div>
-    </header>
+</header>

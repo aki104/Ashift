@@ -18,7 +18,21 @@
 //= require_tree .
 //= require cocoon
 
+$(function() {
+  $(document).on('click', '.edit_button', function() {
+    $('.sign_modal_wrapper').show();
+    $('.sign_modal').show();
+    if ($(this).hasClass('edit_button')) {
+      $('.sign_modal_edit').show();
+    }
+  });
+});
 
+$(document).on('click', '.sign_modal_wrapper, .fa_wrapper', function() {
+    $('.sign_modal_wrapper').hide();
+    $('.sign_modal').hide();
+    $('.sign_modal_content').hide();
+})
 
 
 
