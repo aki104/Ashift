@@ -1,17 +1,16 @@
 <header class="header_nav">
       <div class="header__menu">
-
-        <nav class="header__menu__nav">
-          <%= link_to (top_path) do %>
-          <span class="header_image">
-          <%= image_tag 'karender.png', :width =>'90px', :height =>'60px' %>
-        </span>
-        <% end %>
+          <nav class="header__menu__nav">
+              <%= link_to (root_path) do %>
+              <span class="header_image">
+                  <%= image_tag 'logo3.png', :width =>'150px', :height =>'90px' %>
+              </span>
+                  <% end %>
 
           <% if admin_signed_in? %>
-            <span class="nav_name"><%= current_admin.admin_name %>さん</span>
+              <span class="nav_name"><%= current_admin.admin_name %>さん</span>
           <% else %>
-            <span>ログインしてください</span>
+              <span>ログインしてください</span>
           <% end %>
 
             <% if admin_signed_in? %>

@@ -1,8 +1,7 @@
-<h1>DateTablesnew</h1>
-<%= render 'layouts/header' %> 
 
-
-<%= form_for @date_table do |f| %>
+<%= render 'layouts/header' %>
+<div class="soso" style="margin: 0px 0px 0px 100px;">
+<%= form_for(@date_table, html: {class: 'test'})do |f| %>
 	<div class="year">
 		<%= f.label :登録したい月を選択　%><br/>
 		<%= raw sprintf(
@@ -17,20 +16,17 @@
 		              '年 ') + '月'%>
     </div>
 	<div></div>
-	<div class="">
+	<div class="aaaa" style="width: 50%;, height: 20%;">
 		<%= f.fields_for :time_tables do |d| %>
   			<% i = 0 %>
 			<%= render 'time_table_fields', f: d %>
-
 		<% end %>
 		<%= link_to_add_association 'add time_tble', f, :time_tables %>
 	</div>
 
 	<%= f.submit "登録", class: "follow_submit" %>
-
-
 <% end %>
-
+</div>
 
 
 

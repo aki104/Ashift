@@ -1,36 +1,36 @@
 class DateTablesController < ApplicationController
     def edit
     # TimeTble.find_by()
-
-     @date_table = DateTable.find_by(employee_id: params[:id])
-
+     @date_table = DateTable.find_by(id: params[:id], employee_id: current_employee.id)
      puts @date_table
   end
 
   def new
   	@date_table = DateTable.new
-  	 15.times { @date_table.time_tables.build }
+  	 30.times { @date_table.time_tables.build }
 
   end
 
   def create
-  	# binding.pry
-  	# puts date_table_params
-  	date_table = DateTable.new(date_table_params)
-    date_table.employee_id = current_employee.id
-    # binding.pry
-
-  	date_table.save
-    redirect_to edit_date_table_path(current_employee.id)
+  	@date_table = DateTable.new(date_table_params)
+    @date_table.employee_id = current_employee.id
+   # binding.pry
+  	   if @date_table.save
+          redirect_to edit_date_table_path(@date_table.id)
+       else
+        puts @date_table.errors.full_messages
+          render 'new'
+       end
+       # binding.pry
   end
 
 
 
   def update
-     time_table = TateTable.find(params[:id])
-     time_table.employee_id = current_employee.id
-     time_table.update(time_table_params)
-      redirect_to edit_date_tables_path
+     date_table = DateTable.find(params[:id])
+     date_table.employee_id = current_employee.id
+     date_table.update(date_table_params)
+      redirect_to edit_date_table_path(current_employee.id)
      # binding.pry
 
      date_table.update(date_table_params)

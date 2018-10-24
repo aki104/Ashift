@@ -1,25 +1,31 @@
-<h2>Log in</h2>
+<div class="container" style="margin:90px 0px 0px 480px ">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align: center;background-color: #CBFFD3;"><h3 class="panel-title"><strong>ログイン</strong></h3></div>
+                <div class="panel-body">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :admin_name  %>
-  </div>
-  <div class="field">
-    <%= f.label :従業員No  %><br />
-    <%= f.text_field :number %>
-  </div>
+                        <%= form_for(resource, :html => {:autocomplete => 'off'}, as: resource_name, url: session_path(resource_name)) do |f| %>
+                          <div class="form-group">
+                            <%= f.label :名前 %><br />
+                            <%= f.text_field :admin_name, class: "form-control"  %>
+                          </div>
+                          <div class="form-group">
+                            <%= f.label :従業員No  %><br />
+                            <%= f.text_field :number, class: "form-control" %>
+                          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                          <div class="form-group">
+                            <%= f.label :password %><br />
+                            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+                          </div>
 
-  
+                          <div class="actions">
+                            <%= f.submit "Log in", class: "btn btn-sm btn-success" %>
+                          </div>
+                        <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+                        <%= render "admins/shared/links" %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="time_edit">
 	  <div class="time_edit_hedder"><%= @time_table.date_table.employee.name %></div>
 	     <div class="time_edit_in">
@@ -11,7 +6,7 @@
              <p style="color: red;">入力時間が正しくありません</p>
           <% end %>
 
-	        <%= form_for @time_table do |f| %>
+	        <%= form_for(@time_table, url: manning_edit_up_path) do |f| %>
 
 
 	        <div class="qqq">
@@ -51,5 +46,3 @@
          <% end %>
       </div>
 </div>
-
-

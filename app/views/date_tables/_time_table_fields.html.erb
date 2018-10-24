@@ -24,16 +24,10 @@
 
   <%= f.select :last_timex, [["休み", "#{100}"], ["00分", "#{0}"], ["30分", "#{30}"]], {}, {class: 'form'}  %>
 
-
-  <%= link_to_remove_association "削除", f %>
-
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="checkboxA"> 休み
-    </label>
-  </div>
-
+<br/><%= f.check_box 'first_time',{}, 100, nil %>休みの場合はチェックを入れてください。
 </div>
+
+ 
 
 
 

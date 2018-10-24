@@ -3,12 +3,6 @@ class EmployeesController < ApplicationController
     @employees = Employee.all
   end
 
-  def create
-  end
-
-  def show
-  end
-
   def edit
     @employee = Employee.find(params[:id])
   end
@@ -17,5 +11,8 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
+     employee = Employee.find(params[:id])
+        employee.destroy
+        redirect_to time_tables_path
   end
 end

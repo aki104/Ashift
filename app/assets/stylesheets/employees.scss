@@ -15,3 +15,11 @@
 	background-color:rgba(105,255,110,0.5);
 	margin: 50px 0px 0px 480px;
 }
+
+.em {
+padding: 0.25em 0.5em;/*上下 左右の余白*/
+color: #494949;/*文字色*/
+background: transparent;/*背景透明に*/
+border-left: solid 5px #7db4e6;/*左線*/
+margin-left: 30px
+}

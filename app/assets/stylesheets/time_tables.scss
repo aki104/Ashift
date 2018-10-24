@@ -2,9 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .f {
-// 	margin-top: 20px;
-// }
+.month{
+	text-align: center;
+	padding-top: 10px;
+	font-size: 30px;
+	margin-left: 633px;
+}
+.month{
+position: relative;
+display: inline-block;
+padding: 0 55px;
+}
+
+.month:before, .month:after{
+content: '';
+position: absolute;
+top: 50%;
+display: inline-block;
+width: 45px;
+height: 2px;
+border-top: solid 1px black;
+border-bottom: solid 1px black;
+}
+
+.month:before {left:0;}
+.month:after {right: 0;}
 .send {
 	margin: 10px 0px 0px 100px;
 }
@@ -86,6 +108,8 @@
 	width: 400px;
 	height: 30px;
 	background-color:rgba(18,255,26,0.5);
+	text-align: center;
+	padding-top: 5px;
 }
 
 .date {
@@ -93,7 +117,7 @@
 }
 
 .shift{
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 
 .link_time{
@@ -102,8 +126,39 @@
 	color: #000000;
 }
 
+// 後半ボタン
+.btna{
+	margin-left: 1372px;
+}
 
+.input-group{
+	margin: 50px 0px 0px 50px;
+}
 
+// .ja {
+// padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+// color: #494949;/*文字色*/
+// background: #f4f4f4;/*背景色*/
+// border-left: solid 5px #7db4e6;/*左線*/
+// border-bottom: solid 3px #d7d7d7;/*下線*/
+// }
+
+.ja{
+position: relative;
+padding: 0.5em;
+background: #a6d3c8;
+color: white;
+}
+
+.ja::before {
+position: absolute;
+content: '';
+top: 100%;
+left: 0;
+border: none;
+border-bottom: solid 15px transparent;
+border-right: solid 20px rgb(149, 158, 155);
+}
 
 
 

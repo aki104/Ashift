@@ -1,7 +1,7 @@
 <%= render 'layouts/admin_header' %>
 
 <ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (top_path), :style => "text-decoration: none;"  %></li>
+	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;"  %></li>
 	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;" %></li>
 	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;" %></li>
 </ul>
@@ -9,28 +9,53 @@
 <div class="manning_area">
 
 	<div class="manning">
-		<p style="text-align: center;"><%= @time_tables.find_by(date: Date.new(2018,11,params[:id].to_i)).date %> (<%= %w(日 月 火 水 木 金 土) [@time_tables.find_by(date: Date.new(2018,11,params[:id].to_i)).date.wday] %>)</p>
-        <p style="text-align: center; font-size: 20px;">マンニング編集</p>
+		<% if %w(日 月 火 水 木 金 土) [TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date.wday] == "日" %>
+		　　　　　<p style="text-align: center; color: red;font-size: 28px;font-weight: bold;"><%= TimeTable.find_by(date: Date.new(2018,11,    params[:id].to_i)).date %> (<%= %w(日 月 火 水 木 金 土) [TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date.wday]    %>)</p>
+		        <p style="text-align: center;">マンニング編集</p>
+
+		 <% elsif %w(日 月 火 水 木 金 土) [TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date.wday] == "土" %>
+				<p style="text-align: center; color: red;font-size: 28px;font-weight: bold;"><%= TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date %> (<%= %w(日 月 火 水 木 金 土) [TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date.wday] %>)</p>
+		        <p style="text-align: center;">マンニング編集</p>
+
+        <% else %>
+		        <p style="text-align: center;font-size: 28px;font-weight: bold;"><%= TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date %> (<%= %w(日 月 火 水 木 金 土) [TimeTable.find_by(date: Date.new(2018,11,params[:id].to_i)).date.wday] %>)</p>
+		        <p style="text-align: center;">マンニング編集</p>
+        <% end %>
         <table>
 
 	        <tr>
 	        	<th></th>
-			    <% 15.times do |i| %>
-					    <th class="manning_time">
-							<div>
-								<%= "#{i += 8}時" %>
-								<div class="manning_time_minit"></div>
-							</div>
-			            </th>
-			             <th class="manning_time">
-							<div>
-								<div class="manning_time_minit"></div>
-							</div>
-			            </th>
+	        	<% if @time_tables.blank? %>
+			        	<% 15.times do |i| %>
+							    <th class="manning_time">
+									<div>
+										<div class="manning_time_minit"></div>
+									</div>
+					            </th>
+					             <th class="manning_time">
+									<div>
+										<div class="manning_time_minit"></div>
+									</div>
+					            </th>
+					    <% end %>
+	        	<% else %>
+					    <% 15.times do |i| %>
+							    <th class="manning_time">
+									<div>
+										<%= "#{i += 8}時" %>
+										<div class="manning_time_minit"></div>
+									</div>
+					            </th>
+					             <th class="manning_time">
+									<div>
+										<div class="manning_time_minit"></div>
+									</div>
+					            </th>
+					    <% end %>
 			    <% end %>
 			</tr>
 
-			<% @time_tables.each do |time| %>
+            <% @time_tables.each do |time| %>
 			<tr>
 				<td>
 					<div class="manning_employee">
@@ -43,10 +68,28 @@
 			    <% 15.times do |i| %>
 			    <td>
 			    	<% if i + 8 >= time.first_time && i + 8 <= time.first_timex %>  <!-- マンニングの範囲を条件分岐 -->
-			    	    <%= link_to (edit_time_table_path(time)) do %>
-					    	<div class="manning_sheet">
-					    	</div>
-				        <% end %>
+
+				    	    <% if time.first_time >= i + 8 && time.last_time == 30 %>
+					    	        <div class="manning_sheet_x">
+						    	    </div>
+
+						    <% elsif time.first_timex <= i + 9 && time.last_timex == 30 %>
+					             <%= link_to (manning_edit_path(time)) do %>
+							    	<div class="manning_sheet">
+							    	</div>
+					             <% end %>
+
+					        <% elsif time.first_timex <= i + 8 && time.last_timex == 0 %>
+					              <div class="manning_sheet_x">
+				    	          </div>
+
+						    <% else %>
+					    	     <%= link_to (manning_edit_path(time)) do %>
+							    	<div class="manning_sheet">
+							    	</div>
+					             <% end %>
+					        <% end %>
+
 			    	<% else %>
 				    	    <div class="manning_sheet_x">
 				    	    </div>
@@ -54,28 +97,30 @@
 			    </td>
 
 				<td>
-					<% if i + 8 >= time.first_time && i + 8 <= time.first_timex %>  <!-- マンニングの範囲を条件分岐 -->
+					<% if i + 8 >= time.first_time && i + 9 <= time.first_timex %>  <!-- マンニングの範囲を条件分岐 -->
 					    <% if time.last_time == 30 && time.last_timex == 30%>
-					        <%= link_to (edit_time_table_path(time)) do %>
+					        <%= link_to (manning_edit_path(time)) do %>
 				    	        <div class="manning_sheet"></div>
 				    	    <% end %>
 
 
 				        <% elsif time.last_timex == 30%>
-				            <%= link_to (edit_time_table_path(time)) do %>
+				            <%= link_to (manning_edit_path(time)) do %>
 				    	        <div class="manning_sheet"></div>
 				    	    <% end %>
+
 				        <% elsif time.last_time == 30 %>
-				           <%= link_to (edit_time_table_path(time)) do %>
+				           <%= link_to (manning_edit_path(time)) do %>
 				    	        <div class="manning_sheet"></div>
 				    	    <% end %>
 				        <% end %>
 
 				        <% if time.last_timex == 0 && time.last_time == 0 %>
-				            <%= link_to (edit_time_table_path(time)) do %>
+				            <%= link_to (manning_edit_path(time)) do %>
 				    	        <div class="manning_sheet"></div>
 				    	    <% end %>
 				        <% end %>
+
 				    <% else %>
 				        <div class="manning_sheet_x"></div>
 				    <% end %>

@@ -3,14 +3,21 @@
 class Employees::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def after_sign_in_path_for(resource)
-     # if date_tables = current_employee.id.presence
-    #  puts current_employee.id
-    #  if DateTable.exists?(employee_id: current_employee.id)
-    #   edit_date_table_path(current_employee.id)
-    # else
-     # new_date_table_path(current_employee.id)
-    # end
+  # def after_sign_in_path_for(resource)
+  #   if DateTable.exists?(employee_id: current_employee.id)
+  #     date = DateTable.find_by(employee_id: current_employee.id)
+  #     edit_date_table_path(date.id)
+  #    # if date_tables = current_employee.id.presence
+  #   #  puts current_employee.id
+  #   #  if DateTable.exists?(employee_id: current_employee.id)
+  #   #   edit_date_table_path(current_employee.id)
+  #   # else
+  #    # new_date_table_path(current_employee.id)
+  #   end
+  # end
+
+  def after_sign_out_path_for(resource)
+    top_path # ログアウト後に遷移するpathを設定
   end
 
 
@@ -24,8 +31,9 @@ def create
     sign_in(resource_name, resource)
     yield resource if block_given?
        if DateTable.exists?(employee_id: current_employee.id)
+          date = DateTable.find_by(employee_id: current_employee.id)
       # if TimeTable.exists?(date_table_id: )
-       redirect_to edit_date_table_path(current_employee.id)
+       redirect_to edit_date_table_path(date.id)
       else
      redirect_to new_date_table_path(current_employee.id)
     end
