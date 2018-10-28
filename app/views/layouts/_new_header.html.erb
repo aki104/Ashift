@@ -10,7 +10,7 @@
               <% if employee_signed_in? %>
                   <li style="padding: 28px 0px 0px 800px; color:white"><%= current_employee.name %>さん ログイン中</li>
                   <%= link_to  destroy_employee_session_path, :style=>"color:white;", method: :delete  do %>
-                      <li style="padding: 28px 0px 0px 15px; color:white">ログアウト</li>
+                      <li style="padding: 28px 0px 0px 30px; color:white">ログアウト</li>
                   <% end %>
               <% else %>
                   <li style="padding: 28px 0px 0px 800px; color:white">ログインしてください</li>
@@ -21,8 +21,3 @@
           </nav>
       </div>
 </header>
-<ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;color:black"  %></li>
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;color:black" %></li>
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;color:black" %></li>
-</ul>

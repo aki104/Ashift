@@ -1,12 +1,11 @@
 
 
-<div class="qqq" >
+<div class="date_table" >
   <%= raw sprintf(
               f.date_select(
                   :date,
                   discard_year: true,
                   use_month_numbers: true,
-                  # discard_month: true,
                   start_year:        2018,
                   end_year:          (Time.now.year),
                   default:           Date.new(Date.today.year.to_i,Date.today.month.to_i + 1),
@@ -27,13 +26,11 @@
 <br/><%= f.check_box 'first_time',{}, 100, nil %>休みの場合はチェックを入れてください。
 </div>
 
- 
-
 
 
 <script>
   $(function(){
-    $('.qqq').each(function(i) {
+    $('.date_table').each(function(i) {
       $(this).find($('select')).eq(1).find($('option')).eq(i).attr('selected', 'selected');
     });
 });

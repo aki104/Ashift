@@ -69,3 +69,6 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'cocoon'
 gem 'kaminari'
+gem 'jquery-ui-rails'
+gem 'ranked-model'
+

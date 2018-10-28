@@ -1,6 +1,9 @@
 class Employee < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include RankedModel
+  ranks :row_order
+
 validates :name,uniqueness: true
 
   devise :database_authenticatable, :registerable,
@@ -8,7 +11,6 @@ validates :name,uniqueness: true
 
   has_many :date_tables
   has_many :work_contents
-
 
   def email_required?
    false

@@ -1,200 +1,127 @@
 
 
-<%= render 'layouts/admin_header' %> 
-
-<ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;"  %></li>
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;" %></li>
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;" %></li>
-</ul>
+<%= render 'layouts/admin_header' %>
 
 <div>
-
 	<div class="shift">
-		<div class="month"><%= DateTable.find_by(date: Date.new(2018,11)).date.month %>月</div>
-		<div style="text-align: center;color:#800000;"><%= link_to "＜＜", time_tables_path, class: "btn btn-default btn-xs" %>16日〜30日</div>
+		<div class="month"><%= DateTable.find_by(date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1)).date.month %>月</div>
+		<div style="text-align: center;color:#800000;"><%= link_to "＜＜", time_tables_path, class: "btn btn-default btn-xs" %>16日〜<%= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1).end_of_month.day%>日</div>
 
-		<table>
-			<tr>
-				<th></th>
-				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-16") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{16}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-17") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"style="color:red;"><%= "#{17}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-18") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day" style="color:red;"><%= "#{18}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-19") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{19}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-20") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{20}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-21") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{21}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-22") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{22}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+		<table class="table-sortable ui-sortable"id="sortable">
+			<thead>
+				<tr>
+					<th></th>
 
+					<% @time_tables.each do |sss| %>
+						<% if %w(日 月 火 水 木 金 土)[sss.date.wday] == "日" %>
+			                <th>
+								<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
+								    <div class="day" style="color:red;"><%= sss.date.day %>日 (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+								<% end %>
+							</th>
+						<% elsif  %w(日 月 火 水 木 金 土)[sss.date.wday] == "土" %>
+						    <th>
+								<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
+								    <div class="day" style="color:blue;"><%= sss.date.day %>日 (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+								<% end %>
+							</th>
+						<% else %>
+						    <th>
+								<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
+								    <div class="day"><%= sss.date.day %>日 (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
+								<% end %>
+							</th>
+						<% end %>
 					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-23") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{23}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-24") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"style="color:red;"><%= "#{24}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				 <th>
-	               <% sss = TimeTable.find_by(date: "2018-11-25") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day" style="color:red;"><%= "#{25}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-26") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{26}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-27") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{27}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-	               <% sss = TimeTable.find_by(date: "2018-11-28") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{28}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-29") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{29}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
-				<th>
-					<% sss = TimeTable.find_by(date: "2018-11-30") %>
-					<%= link_to (manning_path(sss.date.day)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="day"><%= "#{30}日" %> (<%= %w(日 月 火 水 木 金 土)[sss.date.wday] %>)</div>
-					<% end %>
-				</th>
 
-	            <td><div class="day"></div></td>
-				<td><div class="day"></div></td>
+		            <td><div class="day"></div></td>
+					<td><div class="day"></div></td>
 
-			</tr>
+				</tr>
+		    </thead>
 
 			<tr>
 				<td><div class="boxaa"></div></td>
-				   <% 15.times do |i| %>
+				   <% @time_tables.each do |i| %>
 				<td><div class="boxa"><input type="text" class="form-control"></div></td>
 				　　<% end %>
 				<td><div class="boxa"></div></td>
 				<td><div class="boxa"></div></td>
 			</tr>
+			<tbody>
+	            <% i = 0 %>
+		        <% @employees.each do |employee| %>
 
-<% i = 0 %>
-	        <% @employees.each do |employee| %>
-
-			<tr>
-				<td>
-					<%= link_to (edit_employee_path(employee.id)), :style => "text-decoration: none;", :class => "link" do %>
-					<div class="boxe"><%= employee.name %></div>
-					<% end %>
-				</td>
+				<tr class="item" data-model-name="employee" data-update-url="/employees/<%= employee.id %>/sort">
+					<td>
+						<%= link_to (edit_employee_path(employee.id)), :style => "text-decoration: none;", :class => "link" do %>
+						    <div class="boxe"><%= employee.name %></div>
+						<% end %>
+					</td>
 
 
-			    <% date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01") %>
-			        <% unless date == nil %>
-			    <% time = TimeTable.where(date_table_id: date.id, date: "2018-11-16".."2018-11-30") %>
+				    <% date = DateTable.find_by(employee_id: employee.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1)) %>
+				        <% unless date == nil %>
+				    <% @time = TimeTable.where(date_table_id: date.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,16)..Date.new(Date.today.year.to_i,Date.today.month.to_i + 1).end_of_month) %>
 
-			     <% time.each do |t| %>
-		            <% if t.first_time != 100 %>
-			            <td>
-			                <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
-				        	    <div class="box">
-				        	    	<% if t.last_time == 0 && t.last_timex == 0 %>
-				        	    	       <%= t.first_time %>:00
-					                       ~
-						        	       <%= t.first_timex %>:00
-					        	    	<% elsif t.last_time == 0 %>
-					        	    	   <%= t.first_time %>:00
-					                       ~
-						        	       <%= t.first_timex %>:<%= t.last_timex %>
-						        	    <% elsif t.last_timex == 0 %>
-					        	    	   <%= t.first_time %>:<%= t.last_time %>
-					                       ~
-						        	       <%= t.first_timex %>:00
-					        	    	<% else %>
-						        	       <%= t.first_time %>:<%= t.last_time %>
-					                       ~
-						        	       <%= t.first_timex %>:<%= t.last_timex %>
-						        	<% end %>
-				        	    </div>
-				        	</div>
-				        </td>
-		            <% else %>
-				        <td>
-				           <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
-				        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
-				        		  <div style="margin: 20px 0px 0px 25px;">
-				        	        <%= image_tag 'stamp_yasumi.png', :width =>'20px', :height =>'20px' %>
-				        	      </div>
-				        	  </div>
-				           </div>
-				        </td>
-			        <% end %>
-			        <% end %>
-			        <% end %>
+				     <% @time.each do |t| %>
+			            <% if t.first_time != 100 %>
+				            <td>
+				                <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
+					        	    <div class="box">
+					        	    	<% if t.last_time == 0 && t.last_timex == 0 %>
+					        	    	       <%= t.first_time %>:00
+						                       ~
+							        	       <%= t.first_timex %>:00
+						        	    	<% elsif t.last_time == 0 %>
+						        	    	   <%= t.first_time %>:00
+						                       ~
+							        	       <%= t.first_timex %>:<%= t.last_timex %>
+							        	    <% elsif t.last_timex == 0 %>
+						        	    	   <%= t.first_time %>:<%= t.last_time %>
+						                       ~
+							        	       <%= t.first_timex %>:00
+						        	    	<% else %>
+							        	       <%= t.first_time %>:<%= t.last_time %>
+						                       ~
+							        	       <%= t.first_timex %>:<%= t.last_timex %>
+							        	<% end %>
+					        	    </div>
+					        	</div>
+					        </td>
+			            <% else %>
+					        <td>
+					           <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
+					        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
+					        		  <div style="margin: 20px 0px 0px 22px;">
+					        	          <%= image_tag 'stamp_yasumi.png', :width =>'20px', :height =>'20px' %>
+					        	      </div>
+					        	  </div>
+					           </div>
+					        </td>
+				        <% end %>
+				        <% end %>
+				        <% end %>
 
-	　　　　　　　　　<% if @p[i] > 45 %>
-					　　<td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
-					　　<td><div class="boxt" style="color: red; font-size: 5px;">残業時間が45時間を超えています<br/><%= @p[i] %></div></td>
-					<% else %>
-					   <td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
-					　　<td><div class="boxt">残業時間<br/><%= @p[i] %></div></td>
-					<% end %>
-					<% i += 1 %>
-				</tr>
-	<% end %>
+		　　　　　　　　　<% if @p[i] > 45 %>
+						　　<td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
+						　　<td><div class="boxt" style="color: red; font-size: 5px;">残業時間が45時間を超えています<br/><%= @p[i] %></div></td>
+						<% else %>
+						   <td><div class="boxt">総労働時間<br/><%= @a[i] %></div></td>
+						　　<td><div class="boxt">残業時間<br/><%= @p[i] %></div></td>
+						<% end %>
+						<% i += 1 %>
+					</tr>
+				<% end %>
+			</tbody>
 	   </table>
 
 	 <div class="sign_modal_wrapper"></div>
     	<div class="sign_modal">
     		<span class="fa_wrapper"><i class="fas fa-backspace"></i></span>
-    		  <div class="sign_modal_edit sign_modal_content">
+    		<div class="sign_modal_edit sign_modal_content">
     			  <P class="ja" style="font-size: 20px;">時間編集</P>
-				  <div class="input-group">
+			    <div class="input-group">
 					 <div id="employee_name"></div>
 					 <form class="edit_time_table" id="edit_time_table" action="/time_tablesaa" method="post" accept-charset="UTF-8">
 						<input type="" class="" name="time_table[date]" id="time_table_date"><br/>
@@ -210,11 +137,9 @@
 						  <input type="submit" name="commit" value="登録" class="follow_submit" date-disable-with="登録">
 					    </div>
                     </form>
-
-
 				</div>
 			</div>
-    </div>
+        </div>
 </div>
 
 
@@ -229,8 +154,6 @@
 			$('#time_table_first_timex').find($('option')).remove();
 			$('#time_table_last_timex').find($('option')).remove();
 			$('#employee_name').val('');
-
-
 
 			$('#time_table_date').val($(this).data('date'));
 			$('#employee_id').val($(this).data('ei'));

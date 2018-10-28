@@ -1,5 +1,5 @@
 
-<%= render 'layouts/header' %> 
+<%= render 'layouts/new_header' %>
 
     <div class="date_edit">
 	      <div class="time_edit_in">
@@ -22,6 +22,7 @@
                     f.date_select(
                         :date,
                         discard_year: true,
+                        disabled: true,
                         use_month_numbers: true,
                         discard_day: true,
                         start_year:        2018,

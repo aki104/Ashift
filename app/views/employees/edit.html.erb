@@ -1,10 +1,5 @@
 
 <%= render 'layouts/admin_header' %>
-<ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;"  %></li>
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;" %></li>
-	<li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;" %></li>
-</ul>
 
 
 <!-- 　31行目までは労働時間を出すための計算 -->
@@ -66,43 +61,27 @@
 			       <div><%= @working_time %>時間</div>
 			    </td>
 			</tr>
-		<% if @over_time > 45 %>
-		   <tr>
-				<td>
-					<div>今月の残業時間</div>
-				</td>
-				<td>
-			       <div style="color:red;">残業時間が45時間を超えています<br/><%= @over_time %>時間</div>
-			    </td>
-			</tr>
-		<% else %>
-			<tr>
-				<td>
-					<div>今月の残業時間</div>
-				</td>
-				<td>
-			       <div><%= @over_time %>時間</div>
-			    </td>
-			</tr>
-		<% end %>
+			<% if @over_time > 45 %>
+			   <tr>
+					<td>
+						<div>今月の残業時間</div>
+					</td>
+					<td>
+				       <div style="color:red;">残業時間が45時間を超えています<br/><%= @over_time %>時間</div>
+				    </td>
+				</tr>
+			<% else %>
+				<tr>
+					<td>
+						<div>今月の残業時間</div>
+					</td>
+					<td>
+				       <div><%= @over_time %>時間</div>
+				    </td>
+				</tr>
+			<% end %>
 
 	    </table>
-           <!--  <div>作業登録</div>
-			<div class="checkbox">
-			    <label>
-			    <input type="checkbox" value="checkboxA"> 朝番
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			    <input type="checkbox" value="checkboxA"> 昼番
-			    </label>
-			</div>
-			<div class="checkbox">
-			    <label>
-			    <input type="checkbox" value="checkboxA"> 夜番
-			    </label>
-			</div> -->
 			<div style="margin-left: 400px;"><%= link_to "削除", employee_path(@employee.id), method: :delete, "data-confirm" => "本当に削除しますか？", :style => "text-decoration: none;", :class => "btn btn-primary"%></div>
 	</div>
 </div>
