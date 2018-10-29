@@ -97,7 +97,7 @@
 				           <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
 				        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
 				        		  <div style="margin: 20px 0px 0px 21px;">
-				        	        <%= image_tag 'stamp_yasumi.png', :width =>'20px', :height =>'20px' %>
+				        	        <%= image_tag '/images/stamp_yasumi.png', :size =>'20x20' %>
 				        	      </div>
 				        	  </div>
 				           </div>
@@ -119,30 +119,30 @@
           </tbody>
 		</table>
 
-    <div class="sign_modal_wrapper"></div>
-    	<div class="sign_modal">
-    		<span class="fa_wrapper"><i class="fas fa-backspace"></i></span>
-    		<div class="sign_modal_edit sign_modal_content">
-    			<P class="ja" style="font-size: 20px;">時間編集</P>
-				<div class="input-group">
-					<div id="employee_name"></div>
-					<form class="edit_time_table" id="edit_time_table" action="/time_tablesaa" method="post" accept-charset="UTF-8">
-						<input type="" class="" name="time_table[date]" id="time_table_date"><br/>
-						<select type="integer" class="form" style="margin-left:20px;" name="time_table[first_time]" id="time_table_first_time"></select>
-						<select type="integer" class="form" name="time_table[last_time]" id="time_table_last_time"></select>
-						~
-						<select type="integer" class="form" name="time_table[first_timex]" id="time_table_first_timex"></select>
-						<select type="integer" class="form" name="time_table[last_timex]" id="time_table_last_timex"></select>
-						<input type="checkbox" value="100" name="time_table[first_time]" id="time_table_first_time"class="" >休み
+	    <div class="sign_modal_wrapper"></div>
+	    	<div class="sign_modal">
+	    		<span class="fa_wrapper"><i class="fas fa-backspace"></i></span>
+	    		<div class="sign_modal_edit sign_modal_content">
+	    			<P class="ja" style="font-size: 20px;">時間編集</P>
+					<div class="input-group">
+						<div id="employee_name"></div>
+						<form class="edit_time_table" id="edit_time_table" action="/time_tablesaa" method="post" accept-charset="UTF-8">
+							<input type="" class="" name="time_table[date]" id="time_table_date"><br/>
+							<select type="integer" class="form" style="margin-left:20px;" name="time_table[first_time]" id="time_table_first_time"></select>
+							<select type="integer" class="form" name="time_table[last_time]" id="time_table_last_time"></select>
+							~
+							<select type="integer" class="form" name="time_table[first_timex]" id="time_table_first_timex"></select>
+							<select type="integer" class="form" name="time_table[last_timex]" id="time_table_last_timex"></select>
+							<input type="checkbox" value="100" name="time_table[first_time]" id="time_table_first_time"class="" >休み
 
-						<input type="hidden" value="asdf" name="" id="employee_id"><br/>
-						<input type="submit" name="commit" value="登録" class="follow_submit" date-disable-with="登録">
-                    </form>
+							<input type="hidden" value="asdf" name="" id="employee_id"><br/>
+							<input type="submit" name="commit" value="登録" class="follow_submit" date-disable-with="登録">
+	                    </form>
 
 
+					</div>
 				</div>
-			</div>
-    </div>
+	    </div>
 </div>
 
 
@@ -157,8 +157,6 @@
 			$('#time_table_first_timex').find($('option')).remove();
 			$('#time_table_last_timex').find($('option')).remove();
 			$('#employee_name').val('');
-
-
 
 			$('#time_table_date').val($(this).data('date'));
 			$('#employee_id').val($(this).data('ei'));

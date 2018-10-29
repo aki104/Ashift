@@ -50,8 +50,6 @@
 			</tr>
 
             <% @time_tables.each do |time| %>
-            <% puts time %>
-            <% puts time.date_table_id %>
 
 			<tr class="item" data-model-name="employee" data-update-url="/employees/<%= time.date_table.employee.id %>/sort">
 				<td>
