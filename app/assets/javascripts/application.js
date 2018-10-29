@@ -12,11 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
+//= require jquery.turbolinks
+//= require jquery-ui/widgets/sortable
 //= require bootstrap-sprockets
+
 //= require_tree .
 //= require cocoon
+//= require jquery-ui
+//= jquery-turbolinks
 
 $(function() {
   $(document).on('click', '.edit_button', function() {
@@ -33,6 +37,31 @@ $(document).on('click', '.sign_modal_wrapper, .fa_wrapper', function() {
     $('.sign_modal').hide();
     $('.sign_modal_content').hide();
 })
+
+
+$(function() {
+  $( ".table-sortable" ).disableSelection();
+  $( ".table-sortable" ).sortable({
+
+        axis: 'y',
+        items: '.item',
+
+        update: (e, ui) => {
+          item = ui.item
+          item_data = item.data()
+          params = { _method: 'put' }
+          params[item_data.modelName] = { row_order_position: item.index() }
+          // console.log("aaa")
+          console.log(item_data)
+          $.ajax({
+                 type: 'POST',
+                 url: item_data.updateUrl,
+                 dataType: 'json',
+                 data: params
+          });
+        }
+  });
+});
 
 
 

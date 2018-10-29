@@ -3,22 +3,22 @@
           <nav class="header__menu__nav">
               <%= link_to (root_path) do %>
               <span class="header_image">
-                  <%= image_tag 'logo3.png', :width =>'150px', :height =>'90px' %>
+                  <%= image_tag '/images/logo3.png', :size =>'150x90' %>
               </span>
                   <% end %>
 
           <% if admin_signed_in? %>
-              <span class="nav_name"><%= current_admin.admin_name %>さん</span>
+              <span class="nav_name" style="color:white"><%= current_admin.admin_name %>さん</span>
           <% else %>
               <span>ログインしてください</span>
           <% end %>
 
             <% if admin_signed_in? %>
-                    <%= link_to  destroy_admin_session_path ,:style => "text-decoration: none;", :class => "header__menu__nav",  method: :delete  do %>
+                    <%= link_to  destroy_admin_session_path ,:style => "text-decoration: none; color:white;", :class => "header__menu__nav",  method: :delete  do %>
                    <span class="nav_txt">ログアウト</span>
                 <% end %>
             <% else %>
-                <%= link_to new_admin_session_path,:style => "text-decoration: none;" do %>
+                <%= link_to new_admin_session_path,:style => "text-decoration: none; color:white;" do %>
                 <span class="nav_txt">ログイン</span>
                 <% end %>
 
@@ -26,3 +26,9 @@
         </nav>
       </div>
 </header>
+
+<ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
+  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;color:black"  %></li>
+  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;color:black" %></li>
+  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;color:black" %></li>
+</ul>

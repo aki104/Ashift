@@ -1,9 +1,9 @@
 class TimeTablesController < ApplicationController
       protect_from_forgery :except => [:update]
+      # protect_from_forgery :except => [:create]
 
   def index_l
-      @time_tables = TimeTable
-      @employees = Employee.all
+      @employees = Employee.rank(:row_order)
       @date_tables = DateTable.all
 @a = []
 @p = []
@@ -12,11 +12,12 @@ i = 0
         @employees.each do |employee|
           @a[i]=0
           @p[i]=0
-            date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01")
+            date = DateTable.find_by(employee_id: employee.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1))
                  unless date == nil
-            time = TimeTable.where(date_table_id: date.id)
+           @time = TimeTable.where(date_table_id: date.id)
+            @time_tables = TimeTable.where(date_table_id: date.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,16)..Date.new(Date.today.year.to_i,Date.today.month.to_i + 1).end_of_month)
 
-               time.each do |t|
+               @time.each do |t|
 
             @working_time = 0   # 労働時間
             @over_time = 0   # 残業時間
@@ -31,6 +32,7 @@ i = 0
                      elsif @lt == -30
                         @all_working_time -= 0.5
                      end
+
                    @working_time += @all_working_time
                    @a[i] += @working_time
           #ここまで労働時間を出すための計算
@@ -45,16 +47,10 @@ i = 0
             end
             i += 1
         end
-
-  end
-
-  def create
-
   end
 
   def index
-      @time_tables = TimeTable.where(date: "2018-11-01".."2018-11-15")
-      @employees = Employee.all
+      @employees = Employee.rank(:row_order)
       @date_tables = DateTable.all
 
 @a = []
@@ -63,11 +59,10 @@ i = 0
         @employees.each do |employee|
           @a[i]=0
           @p[i]=0
-            date = DateTable.find_by(employee_id: employee.id, date: "2018-11-01")
+            date = DateTable.find_by(employee_id: employee.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1))
                  unless date == nil
             @time = TimeTable.where(date_table_id: date.id)
-
-
+            @time_tables = TimeTable.where(date_table_id: date.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,1)..Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,15))
 
                @time.each do |t|
                  @working_time = 0   # 労働時間
@@ -82,6 +77,7 @@ i = 0
                      elsif @lt == -30
                         @all_working_time -= 0.5
                      end
+
                    @working_time += @all_working_time
                    @a[i] += @working_time
           #ここまで労働時間を出すための計算
@@ -99,6 +95,13 @@ i = 0
         end
   end
 
+   # this action will be called via ajax
+  def sort
+      employee = Employee.find(params[:employee_id])
+      employee.update(employee_params)
+      render nothing: true
+  end
+
   def edit
        @time_table = TimeTable.find(params[:id])
   end
@@ -108,23 +111,24 @@ i = 0
       puts  params[:time_table][:first_time]
       # binding.pry
       params[:time_table][:date] = Date.parse(params[:time_table][:date])
+
       if  params[:time_table][:first_time].to_i == 100
           @time_table.update(first_time: 100, first_timex: 100, last_time: 100, last_timex: 100)
 
-          if  Date.new(2018,11,01) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(2018,11,15)
+          if  Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,1) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,15)
              redirect_to time_tables_path, notice: '時間を編集しました'
-          elsif Date.new(2018,11,16) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(2018,11,30)
+          elsif Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,16) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,).end_of_month
              redirect_to time_tables_l_path
           end
 
       else
 
           if @time_table.update(time_table_params)
-              if Date.new(2018,11,01) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(2018,11,15)
+              if Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,1) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,15)
                  redirect_to time_tables_path, notice: '時間を編集しました'
 
 
-              elsif Date.new(2018,11,16) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(2018,11,30)
+              elsif Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,16) <= params[:time_table][:date] && params[:time_table][:date] <= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1,).end_of_month
                  redirect_to time_tables_l_path
               end
           else
@@ -159,8 +163,9 @@ i = 0
 
   private
 
+ # Never trust parameters from the scary internet, only allow the white list through.
   def time_table_params
-    params.require(:time_table).permit(:id, :first_time, :first_timex, :last_time, :last_timex, :employee_id, :date)
+    params.require(:time_table).permit(:id, :first_time, :first_timex, :last_time, :last_timex, :employee_id, :date, :row_order_position)
   end
 
 end
