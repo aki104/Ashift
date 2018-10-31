@@ -1,0 +1,57 @@
+// Place all the styles related to the mannings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.manning{
+	margin: 20px 0px 20px 140px;
+	width: 1130px;
+	border: solid 1px #999999;
+	padding: 50px ;
+	background-color:rgba(0,52,87,0.1);
+}
+
+.manning_sheet{
+	width: 30px;
+	height: 70px;
+	border: solid 1px #999999;
+	background-color:#87CEFA;
+}
+
+.manning_sheet:hover {
+	width: 30px;
+	height: 70px;
+	background-color:#C2EEFF;
+	border: solid 1px #999999;
+	transition: background-color .5s;
+}
+
+.manning_sheet_x{
+    width: 30px;
+	height: 70px;
+	border: solid 1px #999999;
+	background-color:rgba(76,255,48,0.9);
+}
+
+.manning_employee{
+	width: 120px;
+	height: 70px;
+	background-color:white;
+	border: solid 1px #999999;
+	font-size: 22px;
+	text-align: center;
+	padding-top: 15px;
+
+}
+
+.manning_time{
+	height:30px;
+	background-color:white;
+}
+
+.link_employee{
+	color: #000000;
+    a:hover { color: #DDDDDD; text-decoration: none; }
+    text-decoration: none;
+}
+

@@ -1,0 +1,89 @@
+// Place all the styles related to the tops controller here.
+// They will scautomatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.top {
+	background-color:rgba(186,255,181,0.3);
+}
+
+.container {
+	display: inline-flex;
+}
+
+.link {
+	  color: #000000;
+}
+
+.top_n{
+  font-size: 50px;
+  padding-left: 10px;
+}
+.link:hover { color: #444444; text-decoration: none;
+}
+
+.header_nav{
+	width: 100%;
+	padding-top: 10px;
+    padding-bottom: 10px;
+	background-color:rgba(190,255,173,1);
+    background-color:rgba(0,0,0,0.6);
+}
+
+.header_image{
+	width:150px;
+	height:90px;
+	margin: 0px 0px 0px 40px;
+    padding-bottom: 10px;
+ }
+
+ .nav_text {
+    margin-left: 15px;
+
+}
+
+.nav_name{
+    margin-left: 800px;
+}
+
+.square_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+}
+.square_btn_a{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+.square_btn_a:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+}
+
+.nav_list{
+    border: solid 1px #999999;
+}
+
+.yasumi_image{
+    margin: 20px 0px 0px 21px;
+}
