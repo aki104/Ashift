@@ -80,8 +80,7 @@
 				    </td>
 				</tr>
 			<% end %>
-
 	    </table>
-			<div style="margin-left: 400px;"><%= link_to "削除", employee_path(@employee.id), method: :delete, "data-confirm" => "本当に削除しますか？", :style => "text-decoration: none;", :class => "btn btn-primary"%></div>
+			<div class="employee_delet"><%= link_to "削除", employee_path(@employee.id), method: :delete, "data-confirm" => "本当に削除しますか？", :style => "text-decoration: none;", :class => "btn btn-primary"%></div>
 	</div>
 </div>

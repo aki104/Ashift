@@ -11,7 +11,7 @@
 
 .edit_employee{
 	width: 500px;
-	height: 500px;
+	height: 400px;
 	background-color:rgba(105,255,110,0.5);
 	margin: 50px 0px 0px 480px;
 }
@@ -22,4 +22,14 @@ color: #494949;/*文字色*/
 background: transparent;/*背景透明に*/
 border-left: solid 5px #7db4e6;/*左線*/
 margin-left: 30px
+}
+
+.container_a{
+  margin-left: 40%;
+  margin-top: 5%;
+  width:100%;
+}
+
+.employee_delet{
+  margin-left: 400px;
 }

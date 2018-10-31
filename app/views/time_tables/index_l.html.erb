@@ -2,7 +2,7 @@
 
 <%= render 'layouts/admin_header' %>
 
-<div>
+<div class="res">
 	<div class="shift">
 		<div class="month"><%= DateTable.find_by(date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1)).date.month %>月</div>
 		<div style="text-align: center;color:#800000;"><%= link_to "＜＜", time_tables_path, class: "btn btn-default btn-xs" %>16日〜<%= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1).end_of_month.day%>日</div>
@@ -53,7 +53,7 @@
 		        <% @employees.each do |employee| %>
 
 				<tr class="item" data-model-name="employee" data-update-url="/employees/<%= employee.id %>/sort">
-					<td>
+					<td class="boxe_a">
 						<%= link_to (edit_employee_path(employee.id)), :style => "text-decoration: none;", :class => "link" do %>
 						    <div class="boxe"><%= employee.name %></div>
 						<% end %>
@@ -93,8 +93,8 @@
 					        <td>
 					           <div data-date="<%= t.date %>" data-ei="<%= employee.id %>" data-ft="<%= t.first_time %>" data-lt="<%= t.last_time %>" data-ftx="<%= t.first_timex %>"data-t_id="<%=t.id%>" data-ltx="<%= t.last_timex %>"data-en="<%= employee.name %>"class="edit_button">
 					        	  <div class="box" style="background-color:rgba(59,0,0,0.3);">
-					        		  <div style="margin: 20px 0px 0px 22px;">
-					        	          <%= image_tag '/images/stamp_yasumi.png', :size =>'20x20' %>
+					        		  <div class="yasumi_image">
+					        	          <%= image_tag '/images/stamp_yasumi.png', :size =>'20x20', :class =>'yasumi' %>
 					        	      </div>
 					        	  </div>
 					           </div>

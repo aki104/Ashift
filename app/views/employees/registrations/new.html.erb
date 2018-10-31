@@ -1,49 +1,50 @@
-<div class="container" style="margin:90px 0px 0px 480px ">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading" style="text-align: center;background-color: #CBFFD3;"><h3 class="panel-title"><strong>新規登録</strong></h3></div>
-                <div class="panel-body">
-                    <%= form_for(resource, :html => {:autocomplete => 'off'}, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                      <%= devise_error_messages! %>
+<div class="res">
+    <div class="container">
+        <div class="col-md-4 container_a">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center;background-color: #CBFFD3;"><h3 class="panel-title"><strong>新規登録</strong></h3></div>
+                    <div class="panel-body">
+                        <%= form_for(resource, :html => {:autocomplete => 'off'}, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                          <%= devise_error_messages! %>
 
 
-                      <div class="form-group">
-                        <%= f.label :名前 %><br />
-                        <%= f.text_field :name, class: "form-control"%>
-                      </div>
+                          <div class="form-group">
+                            <%= f.label :名前 %><br />
+                            <%= f.text_field :name, class: "form-control"%>
+                          </div>
 
-                      <div class="form-group">
-                        <%= f.label :従業員No %><br />
-                        <%= f.text_field :number, class: "form-control"%>
-                      </div>
+                          <div class="form-group">
+                            <%= f.label :従業員No %><br />
+                            <%= f.text_field :number, class: "form-control"%>
+                          </div>
 
-                      <div class="form-group">
-                        <%= f.label :メールアドレス %><br />
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-                      </div>
+                          <div class="form-group">
+                            <%= f.label :メールアドレス %><br />
+                            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                          </div>
 
-                      <div class="form-group">
-                        <%= f.label :パスワード %>
-                        <% if @minimum_password_length %>
-                        <em>(<%= @minimum_password_length %> characters minimum)</em>
-                        <% end %><br />
-                        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-                      </div>
+                          <div class="form-group">
+                            <%= f.label :パスワード %>
+                            <% if @minimum_password_length %>
+                            <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %><br />
+                            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                          </div>
 
-                      <div class="form-group">
-                        <%= f.label :パスワード確認 %><br />
-                        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-                      </div>
+                          <div class="form-group">
+                            <%= f.label :パスワード確認 %><br />
+                            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                          </div>
 
-                      <div class="actions">
-                        <%= f.submit "Sign up", class: "btn btn-sm btn-success" %>
-                      </div>
-                    <% end %>
-                    <%= render "employees/shared/links" %>
+                          <div class="actions">
+                            <%= f.submit "Sign up", class: "btn btn-sm btn-success" %>
+                          </div>
+                        <% end %>
+                        <%= render "employees/shared/links" %>
 
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 

@@ -3,7 +3,7 @@
           <nav class="header__menu__nav">
               <%= link_to (root_path) do %>
               <span class="header_image">
-                  <%= image_tag '/images/logo3.png', :size =>'150x90' %>
+                  <%= image_tag '/images/logo3.png', :size =>'150x90', :class =>"image_logo" %>
               </span>
                   <% end %>
 
@@ -15,11 +15,11 @@
 
             <% if admin_signed_in? %>
                     <%= link_to  destroy_admin_session_path ,:style => "text-decoration: none; color:white;", :class => "header__menu__nav",  method: :delete  do %>
-                   <span class="nav_txt">ログアウト</span>
+                   <span class="nav_text">ログアウト</span>
                 <% end %>
             <% else %>
                 <%= link_to new_admin_session_path,:style => "text-decoration: none; color:white;" do %>
-                <span class="nav_txt">ログイン</span>
+                <span class="nav_text">ログイン</span>
                 <% end %>
 
             <% end %>
@@ -28,7 +28,7 @@
 </header>
 
 <ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;color:black"  %></li>
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;color:black" %></li>
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;color:black" %></li>
+  <li class="nav_list" role="presentation"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;color:black"  %></li>
+  <li class="nsv_list" role="presentation"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;color:black" %></li>
+  <li class="nav_list" role="presentation"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;color:black" %></li>
 </ul>

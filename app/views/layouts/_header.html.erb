@@ -1,28 +1,26 @@
 <header class="header_nav">
-      <div class="">
-        <nav>
-          <ul style="display: flex; list-style:none;">
            <%= link_to (root_path) do %>
-            <li class="header_image">
-                <%= image_tag '/images/logo3.png', :size =>'150x90' %>
-            </li>
+            <span class="header_image">
+                <%= image_tag '/images/logo3.png', :size =>'150x90', :class =>"image_logo" %>
+            </span>
           <% end %>
               <% if employee_signed_in? %>
-                  <li style="padding: 28px 0px 0px 800px; color:white"><%= current_employee.name %>さん ログイン中</li>
-                  <%= link_to  destroy_employee_session_path, :style=>"color:white;", method: :delete  do %>
-                      <li style="padding: 28px 0px 0px 15px; color:white">ログアウト</li>
-                  <% end %>
+                  <span class="nav_name" style="color:white"><%= current_employee.name %>さん ログイン中</span>
+                      <%= link_to  destroy_employee_session_path, :style=>"color:white; text-decoration: none;", method: :delete  do %>
+                          <span class="nav_text">ログアウト</span>
+                      <% end %>
               <% else %>
-                  <li style="padding: 28px 0px 0px 800px; color:white">ログインしてください</li>
-                  <li style="padding: 28px 0px 0px 15px;"><%= link_to "ログイン", new_employee_session_path, :style=>"color:white;"  %></li>
-                  <li style="padding: 28px 0px 0px 15px;"><%= link_to "新規登録", new_employee_registration_path, :style=>"color:white;" %></li>
+                  <span class="nav_name" style="color:white">ログインしてください</span>
+                      <%= link_to new_employee_session_path, :style=>"color:white; text-decoration: none;" %>
+                          <span class="nav_text">ログイン</span>
+                      <% end %>
+                  <%= link_to new_employee_registration_path, :style=>"color:white; text-decoration: none;" %>
+                      <span class="nav_text">新規登録</span>
               <% end %>
-            </ul>
-          </nav>
       </div>
 </header>
 <ul class="nav nav-tabs nav-justified " style="background-color:rgba(66,75,87,0.2); text-decoration: none;">
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;color:black"  %></li>
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;color:black" %></li>
-  <li role="presentation" style="border: solid 1px #999999;"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;color:black" %></li>
+  <li  class="nav_list" role="presentation"><%= link_to "TOPページ", (root_path), :style => "text-decoration: none;color:black"  %></li>
+  <li class="nav_list" role="presentation"><%= link_to "シフト作成ページ", (time_tables_path), :style => "text-decoration: none;color:black" %></li>
+  <li  class="nav_list" role="presentation"><%= link_to "従業員一覧", (employees_path), :style => "text-decoration: none;color:black" %></li>
 </ul>

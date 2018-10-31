@@ -52,7 +52,7 @@
             <% @time_tables.each do |time| %>
 
 			<tr class="item" data-model-name="employee" data-update-url="/employees/<%= time.date_table.employee.id %>/sort">
-				<td>
+				<td class="manning_a">
 					<div class="manning_employee">
 					    <%= link_to (edit_employee_path(time.date_table.employee.id)), :style => "text-decoration: none;", :class => "link_employee" do %>
 			                <%= time.date_table.employee.name %>
@@ -61,7 +61,7 @@
 			    </td>
 
 			    <% 15.times do |i| %>
-			    <td>
+			    <td class="manning_a">
 			    	<% if i + 8 >= time.first_time && i + 8 <= time.first_timex %>  <!-- マンニングの範囲を条件分岐 -->
 
 				    	    <% if time.first_time >= i + 8 && time.last_time == 30 %>
@@ -91,7 +91,7 @@
 				    <% end %>
 			    </td>
 
-				<td>
+				<td class="manning_a">
 					<% if i + 8 >= time.first_time && i + 9 <= time.first_timex %>  <!-- マンニングの範囲を条件分岐 -->
 					    <% if time.last_time == 30 && time.last_timex == 30%>
 					        <%= link_to (manning_edit_path(time)) do %>

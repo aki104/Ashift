@@ -6,7 +6,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_in_path_for(resource)
 
-     time_tables_path
+     root_path
   end
 
   # GET /resource/sign_up
