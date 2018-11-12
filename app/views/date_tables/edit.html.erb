@@ -36,6 +36,7 @@
       				   <%= render 'time_table_fields', f: d %>
 
       		      <% end %>
+                <%= link_to_add_association 'add time_tble', f, :time_tables %>
     	      </div>
 
          <%= f.submit "登録", class: "follow_submit"%>

@@ -3,7 +3,7 @@
 
 
 <!-- 　31行目までは労働時間を出すための計算 -->
-			    <% date = DateTable.find_by(employee_id: @employee.id, date: "2018-11-01") %>
+			    <% date = DateTable.find_by(employee_id: @employee.id, date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1)) %>
 			        <% unless date == nil %>
 			    <% time = TimeTable.where(date_table_id: date.id) %>
 

@@ -7,7 +7,7 @@
 		<div class="month"><%= DateTable.find_by(date: Date.new(Date.today.year.to_i,Date.today.month.to_i + 1)).date.month %>月</div>
 		<div style="text-align: center;color:#800000;"><%= link_to "＜＜", time_tables_path, class: "btn btn-default btn-xs" %>16日〜<%= Date.new(Date.today.year.to_i,Date.today.month.to_i + 1).end_of_month.day%>日</div>
 
-		<table class="table-sortable ui-sortable"id="sortable">
+		<table class="table-sortable ui-sortable table-responsive"id="sortable">
 			<thead>
 				<tr>
 					<th></th>

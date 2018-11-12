@@ -7,7 +7,7 @@
 
 <body class= "top" style="width:100%;">
 	<div class="container" style="width:100%;">
-		<div class="item square_btn" style="width:42%; height:40%; background:linear-gradient(#1E00FF, #05FBFF); margin:80px 0px 0px 4%; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+		<div class="item square_btn" style="width:600px; height:450px; background:linear-gradient(#1E00FF, #05FBFF); margin:80px 0px 0px 4%; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
 			<%= link_to (new_admin_session_path), class: "link" do %>
 					<div style= "padding: 60px 0px 0px 0px; ">
 						<%= image_tag '/images/saraly.jpeg', :size =>'300x250', :class =>"image_tag" %>
@@ -24,7 +24,7 @@
 	       <% if DateTable.exists?(employee_id: current_employee.id) %>
 
 	           <% date = DateTable.find_by(employee_id: current_employee.id) %>
-			       <div class="item square_btn_a" style="width:42px; height:50px; background:linear-gradient(#F4A460, #FFDBC9); margin:80px 0px 0px 7%; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+			       <div class="item square_btn_a" style="width:600px; height:450px; background:linear-gradient(#F4A460, #FFDBC9); margin:80px 0px 0px 7%; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
 			            <%= link_to edit_date_table_path(date.id), class: "link" do %>
 					    <div style= "padding: 60px 0px 0px 0px; ">
 						    <%= image_tag '/images/team.jpeg', :size =>'300x250', :class =>"image_tag"%>
@@ -53,7 +53,7 @@
 
 	   <% else %>
 
-		   <div class="item square_btn_a" style="width:42%; height:60%; background:linear-gradient(#F4A460, #FFDBC9); margin:80px 0px 0px 7%; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
+		   <div class="item square_btn_a" style="width:600px; height:450px; background:linear-gradient(#F4A460, #FFDBC9); margin:80px 0px 0px 7%; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/">
 		        <%= link_to new_employee_session_path, class: "link" do %>
 					<div style= "padding: 60px 0px 0px 00px; ">
 						<%= image_tag '/images/team.jpeg', :size =>'300x250', :class =>"image_tag"%>
