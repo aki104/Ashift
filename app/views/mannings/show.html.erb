@@ -93,6 +93,7 @@
 
 				<td class="manning_a">
 					<% if i + 8 >= time.first_time && i + 9 <= time.first_timex %>  <!-- マンニングの範囲を条件分岐 -->
+
 					    <% if time.last_time == 30 && time.last_timex == 30%>
 					        <%= link_to (manning_edit_path(time)) do %>
 				    	        <div class="manning_sheet"></div>
